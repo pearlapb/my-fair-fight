@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS achievements;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
@@ -17,11 +18,17 @@ CREATE TABLE users (
     favourite_kick VARCHAR,
     favourite_punch VARCHAR,
     favourite_kata VARCHAR,
-    favourite_woman VARCHAR
+    favourite_woman VARCHAR,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE achievements (
     id SERIAL PRIMARY KEY,
     student_id INTEGER NOT NULL,
-    achievement INTEGER NOT NULL
+    achievement_type VARCHAR NOT NULL,
+    achievement_name VARCHAR NOT NULL,
+    badge_image VARCHAR,
+    sender_id INTEGER,
+    comment VARCHAR,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

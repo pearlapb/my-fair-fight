@@ -29,6 +29,7 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use('/', require('./routes/loginAndRegRoutes.js'));
 app.use('/', require('./routes/userProfileRoutes.js'));
 app.use('/', require('./routes/updateUserProfileRoutes.js'));
+app.use('/', require('./routes/userAchievementsRoutes.js'));
 
 app.get('/', function(req, res) {
     if (!req.session.user) {

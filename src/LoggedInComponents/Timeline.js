@@ -8,43 +8,33 @@ class Timeline extends Component {
         this.state = {};
     }
 
+    componentDidMount() {
+        axios.get('/getAllAchievements').then((res) => {
+            console.log('hey these are the achievements --> ', res.data.result);
+            this.setState({ achievementsArray: res.data.result })
+        })
+    }
+
     render() {
+
+        let achievements = '';
+        if (this.state.achievementsArray) {
+            achievements = this.state.achievementsArray.map((achievement) => {
+                return (
+                    <li className="timeline-event">
+                        <div className="event-content">
+                            <h3>You achieved a new {achievement.achievement_type}!</h3>
+                            <p>Congratulations on receiving a {achievement.achievement_name} {achievement.achievement_type} badge!</p>
+                            <span className="event-date">(add date when updated database)</span>
+                        </div>
+                    </li>
+                )
+            })
+        }
         return (
             <section id="achievement-feed">
-
                 <ul>
-                    <li className="timeline-event">
-                        <div className="event-content">
-                            <h3>Title of event</h3>
-                            <p>Chupa chups gummies candy canes cupcake bear claw muffin. Cotton candy lemon drops danish. Caramels brownie jujubes bear claw macaroon pudding cake gummies. Apple pie halvah tootsie roll marshmallow tart muffin biscuit candy I love. Icing bonbon I love dessert oat cake. Cake wafer I love gummi bears wafer. Chupa chups candy canes dessert cotton candy. Jelly-o ice cream lemon drops I love tart gummi bears cupcake I love oat cake.</p>
-                            <span className="event-date">Jan 14</span>
-                        </div>
-                    </li>
-
-                    <li className="timeline-event">
-                        <div className="event-content">
-                            <h3>Title of event N2</h3>
-                            <p>Chupa chups gummies candy canes cupcake bear claw muffin. Cotton candy lemon drops danish. Caramels brownie jujubes bear claw macaroon pudding cake gummies. Apple pie halvah tootsie roll marshmallow tart muffin biscuit candy I love. Icing bonbon I love dessert oat cake. Cake wafer I love gummi bears wafer. Chupa chups candy canes dessert cotton candy. Jelly-o ice cream lemon drops I love tart gummi bears cupcake I love oat cake.</p>
-                            <span className="event-date">Jan 12</span>
-                        </div>
-                    </li>
-
-                    <li className="timeline-event">
-                        <div className="event-content">
-                            <h3>Title of event N3</h3>
-                            <p>Chupa chups gummies candy canes cupcake bear claw muffin. Cotton candy lemon drops danish. Caramels brownie jujubes bear claw macaroon pudding cake gummies. Apple pie halvah tootsie roll marshmallow tart muffin biscuit candy I love. Icing bonbon I love dessert oat cake. Cake wafer I love gummi bears wafer. Chupa chups candy canes dessert cotton candy. Jelly-o ice cream lemon drops I love tart gummi bears cupcake I love oat cake.</p>
-                            <span className="event-date">Jan 12</span>
-                        </div>
-                    </li>
-
-                    <li className="timeline-event">
-                        <div className="event-content">
-                            <h3>Title of event N4</h3>
-                            <p>Chupa chups gummies candy canes cupcake bear claw muffin. Cotton candy lemon drops danish. Caramels brownie jujubes bear claw macaroon pudding cake gummies. Apple pie halvah tootsie roll marshmallow tart muffin biscuit candy I love. Icing bonbon I love dessert oat cake. Cake wafer I love gummi bears wafer. Chupa chups candy canes dessert cotton candy. Jelly-o ice cream lemon drops I love tart gummi bears cupcake I love oat cake.</p>
-                            <span className="event-date">Jan 12</span>
-                        </div>
-                    </li>
-
+                    {achievements}
                 </ul>
             </section>
         )
