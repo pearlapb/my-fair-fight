@@ -1,0 +1,449 @@
+/*=============================================*/
+/*=============== OVERALL STYLE ===============*/
+/*=============================================*/
+
+body {
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    color: #484848;
+}
+
+.blue-text {
+    color: #0B437A;
+}
+
+.error {
+    color: red;
+}
+
+html, body, body>div {
+    top: -1px;
+    left: -1px;
+    right: +1px;
+    bottom: +1px;
+}
+
+/*=======================================*/
+/*=============== BUTTONS ===============*/
+/*=======================================*/
+
+a.white-oval {
+    color: #2948ff;
+    background-color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+button.white-oval {
+    color: #2948ff;
+    background-color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+a.white-oval:hover {
+    background-color: #f2f2f2;
+}
+
+a.blue-oval {
+    color: white;
+    background-color: #2948ff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+a.blue-oval:hover {
+    background-color: #435eff;
+}
+
+/*======================================*/
+/*=============== NAVBAR ===============*/
+/*======================================*/
+
+.nav-bar {
+    height: 100px;
+    white-space: nowrap;
+    padding: 5px;
+    margin-bottom: 20px;
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);*/
+}
+
+.nav-bar > a > img {
+    float: left;
+    height: 60px;
+}
+
+.nav-bar > #login-reg-button {
+    float: right;
+    cursor: pointer
+}
+
+#nav-bar-cross {
+    float: right;
+    height: 40px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#large-popup-menu {
+    top: -1px;
+    left: -1px;
+    right: +1px;
+    bottom: +1px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: white;
+    font-size: 30px;
+    transition: 2s;
+}
+
+#large-popup-menu > ul {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    margin-top: 100px;
+}
+
+#large-popup-menu > ul > li {
+    text-align: center;
+    list-style-type: none;
+    margin: 20px;
+}
+
+#large-popup-menu > ul > li:hover {
+    cursor: pointer;
+
+}
+
+/*====================================================*/
+/*=============== LOGIN & REGISTRATION ===============*/
+/*====================================================*/
+
+form.reg-login-forms {
+    color: white;
+    width: 50%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-content: space-around;
+    margin-bottom: 100px;
+}
+
+form.reg-login-forms > p {
+    font-size: 15px;
+}
+
+/*for inputs and selectors*/
+.blue-background-style {
+    background: rgb(41, 72, 255);
+    background: rgba(41, 72, 255, 0);
+    color: #ffff4d;
+    text-align: center;
+    font-size: 15px;
+    border: 1px solid white;
+    border-radius: 10px;
+    height: 30px;
+    margin: 5px;
+}
+.blue-background-style::placeholder {
+    color: white;
+    text-align: center;
+}
+/*-------*/
+
+#user-type-checks {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+input[type='checkbox'] + label {
+    font-size: 16px;
+}
+
+#student-selections {
+    margin: 20px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+select {
+    width: 150px;
+}
+
+div.side-by-side-elements {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+/*=========================================*/
+/*============= HOMEPAGE FEED =============*/
+/*=========================================*/
+
+#profile-summary {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+#profile-summary > #photo {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: center;
+    justify-content: center;
+}
+
+#profile-summary > #photo > img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50px;
+    border: 2px dashed #2948ff;
+}
+
+#profile-summary > #photo > div {
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+
+#profile-summary > #progress-bars {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+
+#profile-summary > #progress-bars > p {
+    font-style: italic;
+    color: #2948ff;
+    text-align: right;
+}
+
+/*=========================================*/
+/*============= PROGRESS BARS =============*/
+/*=========================================*/
+
+.progress-bar {
+    border: 1px solid #484848;
+    width: 200px;
+    height: 20px;
+    border-radius: 30px;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.first-progress-point {
+    border-radius: 30px 0px 0px 30px;
+    border-right: 0.5px solid #484848;
+    height: 20px;
+    width: 40px;
+}
+
+.last-progress-point {
+    border-radius: 0px 30px 30px 0px;
+    border-left: 0.5px solid #484848;
+    height: 20px;
+    width: 40px;
+}
+
+.progress-point {
+    border-left: 0.5px solid #484848;
+    border-right: 0.5px solid #484848;
+    height: 20px;
+    width: 40px;
+}
+
+.achieved {
+    background: #2948ff; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #2948ff, #396afc, #2948ff); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #2948ff, #396afc, #2948ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+/*=========================================*/
+/*============= TIMELINE FEED =============*/
+/*=========================================*/
+
+#achievement-feed ul li {
+    list-style-type: none;
+    position: relative;
+    width: 2px;
+    margin: 0 auto;
+    padding-top: 50px;
+    background: #2948ff;
+}
+
+#achievement-feed ul li::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: inherit;
+}
+
+.event-icon img {
+    width: 100px;
+    height: 100px;
+}
+
+#achievement-feed ul li div {
+    position: relative;
+    bottom: 0;
+    width: 400px;
+    padding: 15px;
+    background: #F45B69;
+}
+
+#achievement-feed ul li div::before {
+    content: '';
+    position: absolute;
+    bottom: 7px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+#achievement-feed ul li:nth-child(odd) div {
+    left: 45px;
+}
+
+#achievement-feed ul li:nth-child(odd) div::before {
+    left: -15px;
+    border-width: 8px 16px 8px 0;
+    border-color: transparent #F45B69 transparent transparent;
+}
+
+#achievement-feed ul li:nth-child(even) div {
+    left: -439px;
+}
+
+#achievement-feed ul li:nth-child(even) div::before {
+    right: -15px;
+    border-width: 8px 0 8px 16px;
+    border-color: transparent transparent transparent #F45B69;
+}
+
+
+/*=========================================*/
+/*=========== UPLOAD PROFILE PIC ==========*/
+/*=========================================*/
+
+#profile-picture-wrap {
+    width: 200px;
+    height: 200px;
+    border-radius: 200px;
+}
+
+#profile-picture-wrap > img {
+    border-radius: 200px;
+    position:absolute;
+    width: 200px;
+    height: 200px;
+}
+
+#profile-picture-wrap > #upload-profile-pic {
+    border-radius: 200px;
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    color: #fff;
+    visibility: hidden;
+    opacity: 0;
+}
+
+#profile-picture-wrap:hover > #upload-profile-pic {
+    visibility: visible;
+    opacity: 0.8;
+}
+
+input.hidden {
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+#upload-profile-pic > #choose-file-label {
+    cursor: pointer;
+}
+
+/*=========================================*/
+/*=============== GRADIENTS ===============*/
+/*=========================================*/
+
+.bloody-mary {
+    background: #FF512F;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #DD2476, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #DD2476, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.rose-water {
+    background: #E55D87;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #5FC3E4, #E55D87);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #5FC3E4, #E55D87); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.lemon-twist {
+    background: #3CA55C;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #B5AC49, #3CA55C);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #B5AC49, #3CA55C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.emerald-water {
+    background: #348F50;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #56B4D3, #348F50);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #56B4D3, #348F50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.sunny-days {
+    background: #EDE574;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #E1F5C4, #EDE574);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #E1F5C4, #EDE574); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.playing-reds {
+    background: #D31027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #EA384D, #D31027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #EA384D, #D31027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.nimvelo {
+    background: #314755;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #26a0da, #314755);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #26a0da, #314755); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.purple-love {
+    background: #cc2b5e;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #753a88, #cc2b5e);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #753a88, #cc2b5e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.new-blue {
+    background: #396afc;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2948ff, #396afc);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2948ff, #396afc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.holy {
+    background: #EF00DF;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #73C105, #E8FF59, #EF00DF);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #73C105, #E8FF59, #EF00DF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
