@@ -13,6 +13,7 @@ router.route('/userProfileInfo')
                 });
                 return;
             } else {
+                console.log(userInfo.rows[0]);
                 let userProfileInfo = {
                     userId: userInfo.rows[0].id,
                     userType: userInfo.rows[0].user_type,
@@ -24,6 +25,7 @@ router.route('/userProfileInfo')
                     city: userInfo.rows[0].city,
                     school: userInfo.rows[0].school,
                     profilePicUrl: userInfo.rows[0].profile_pic_url,
+                    profileColor: userInfo.rows[0].profile_color,
                 };
                 res.json({
                     success: true,

@@ -42,6 +42,25 @@ button.white-oval {
     border-radius: 30px;
 }
 
+button.white {
+    color: #484848;
+    background-color: white;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+button.badges {
+    width: 150px;
+    margin: 5px;
+}
+
+.inline-buttons {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin: 20px;
+}
+
 a.white-oval:hover {
     background-color: #f2f2f2;
 }
@@ -398,8 +417,49 @@ div.side-by-side-elements {
 }
 
 /*=========================================*/
+/*================= PROFILE ===============*/
+/*=========================================*/
+
+#profile-wrapper {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    border-radius: 20px;
+    color: white;
+}
+
+#student-diary {
+    margin: 20px;
+    width: 80%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.badge-page {
+    border-radius: 20px;
+    background-color: white;
+    color: #484848;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-content: space-around;
+}
+
+.badge {
+    width: 150px;
+    height: 150px;
+}
+
+/*=========================================*/
 /*=========== UPLOAD PROFILE PIC ==========*/
 /*=========================================*/
+
 
 #profile-picture-wrap {
     width: 200px;

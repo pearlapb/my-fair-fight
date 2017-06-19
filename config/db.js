@@ -22,8 +22,8 @@ const addNewUserToDb = (newUserInfo) => {
         // IF NEW USER IS A STUDENT
         if (newUserInfo.userType == 'student') {
             console.log(chalk.bgGreen('im a student'));
-            q = `INSERT INTO users (user_type, first_name, last_name, user_name, hashed_pw, age, country, city, school, profile_pic_url)
-                        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+            q = `INSERT INTO users (user_type, first_name, last_name, user_name, hashed_pw, age, country, city, school, profile_pic_url, profile_color)
+                        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
                         RETURNING *;`;
             params = [
                 newUserInfo.userType,
@@ -35,7 +35,8 @@ const addNewUserToDb = (newUserInfo) => {
                 newUserInfo.country,
                 newUserInfo.city,
                 newUserInfo.school,
-                '/public/assets/unknown.png'
+                '/public/assets/unknown.png',
+                'new-blue'
             ];
         // IF NEW USER IS A TEACHER (add coutry later on!)
         } else if (newUserInfo.userType == 'teacher') {
@@ -76,7 +77,7 @@ const addNewUserToDb = (newUserInfo) => {
 
 const getUserProfileInfo = (requestedId) => {
     return new Promise(function(resolve, reject) {
-        const q = 'SELECT id, user_type, user_name, first_name, last_name, age, country, city, school, profile_pic_url FROM users WHERE id = $1;';
+        const q = 'SELECT id, user_type, user_name, first_name, last_name, age, country, city, school, profile_pic_url, profile_color FROM users WHERE id = $1;';
         const params = [requestedId];
         db.query(q, params).then(function(result) {
             resolve(result);

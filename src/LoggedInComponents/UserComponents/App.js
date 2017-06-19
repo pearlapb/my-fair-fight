@@ -21,16 +21,17 @@ class AdminApp extends Component {
             } else {
                 this.setState({ isTeacher: true });
             }
-            const {userId, userType, userName, firstName, lastName, country, profilePicUrl} = res.data.result;
-            this.setState({ userId, userType, userName, firstName, lastName, country, profilePicUrl });
+            console.log(res.data.result);
+            const {userId, userType, userName, firstName, lastName, country, profilePicUrl, profileColor} = res.data.result;
+            this.setState({ userId, userType, userName, firstName, lastName, country, profilePicUrl, profileColor });
             console.log(this.state);
         })
     }
 
     render() {
-        const {userId, userType, isStudent, isTeacher, userName, firstName, lastName, country, profilePicUrl} = this.state;
+        const {userId, userType, isStudent, isTeacher, userName, firstName, lastName, country, profilePicUrl, profileColor} = this.state;
         const children = React.cloneElement(this.props.children, {
-            setNewImage: this.setNewImage, userId, userType, isStudent, isTeacher, userName, firstName, lastName, country, profilePicUrl
+            setNewImage: this.setNewImage, userId, userType, isStudent, isTeacher, userName, firstName, lastName, country, profilePicUrl, profileColor
         });
         return (
             <div>

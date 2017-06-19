@@ -20,7 +20,7 @@ class Timeline extends Component {
         let achievements = '';
         if (this.state.achievementsArray) {
             achievements = this.state.achievementsArray.map((achievement) => {
-                let badgeUrl = "/public/assets/" + achievement.achievement_type + "/" + achievement.achievement_name + ".svg";
+                let badgeUrl = `/public/assets/badges/${achievement.achievement_type}/${achievement.achievement_name}.svg`;
                 return (
                     <li className="timeline-event">
                         <img className="event-logo" src={badgeUrl}/>

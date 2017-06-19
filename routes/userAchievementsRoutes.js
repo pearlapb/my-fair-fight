@@ -5,7 +5,6 @@ router.route('/getAllAchievements')
 
     .get( (req, res) => {
         db.getAllAchievements(req.session.user.userId).then((result) => {
-            console.log(result.rows);
             res.json({ result: result.rows });
         }).catch((err) => {
             console.log(err);
