@@ -188,7 +188,7 @@ div.side-by-side-elements {
 }
 
 /*=========================================*/
-/*============= HOMEPAGE FEED =============*/
+/*========= HOMEPAGE FEED (GENERAL)========*/
 /*=========================================*/
 
 #profile-summary {
@@ -218,6 +218,10 @@ div.side-by-side-elements {
     flex-flow: column nowrap;
     justify-content: center;
 }
+
+/*=========================================*/
+/*========= HOMEPAGE FEED (STUDENT)========*/
+/*=========================================*/
 
 #profile-summary > #progress-bars {
     display: flex;
@@ -347,6 +351,44 @@ div.side-by-side-elements {
     border-color: transparent #484848 transparent transparent;
 }
 
+
+/*=========================================*/
+/*========= HOMEPAGE FEED (TEACHER)========*/
+/*=========================================*/
+
+#student-feed {
+    margin: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#student-list {
+    margin: 10px;
+    width: 80%;
+    height: auto;
+    display: flex;
+    flex-flow: column nowrap;
+
+}
+
+.student-summary {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.student-summary > img {
+    height: 100px;
+    width: 100px;
+    margin: 5px;
+}
 
 /*=========================================*/
 /*=========== UPLOAD PROFILE PIC ==========*/

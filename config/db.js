@@ -98,19 +98,6 @@ const saveImageUrlToDb = (file, session) => {
     });
 };
 
-const insertOneAchievement = (requestedId, achType, achName) => {
-    return new Promise(function(resolve, reject) {
-        const q = `INSERT INTO achievements (student_id, achievement_type, achievement_name)
-                    VALUES ($1, $2, $3)`;
-        const params = [requestedId, achType, achName];
-        db.query(q, params).then((res) => {
-            resolve(res);
-        }).catch((err) => {
-            reject(err);
-        });
-    });
-};
-
 const getAllAchievements = (requestedId) => {
     return new Promise(function(resolve, reject) {
         const q = `SELECT * FROM achievements WHERE student_id = $1`;
@@ -152,11 +139,43 @@ const getAllStudentsFromCountry = (country) => {
     });
 };
 
+const giveAchievementToStudents = (selectedStudents, achievementType, achievementName, senderId) => {
+    return new Promise(function(resolve, reject) {
+        let counter = 0, achievementsSent = [];
+        for (var i = 0; i < selectedStudents.length; i++) {
+            insertOneAchievement(selectedStudents[i], achievementType, achievementName, senderId).then((result) => {
+                counter++;
+                achievementsSent.push(result);
+                if (counter == selectedStudents.length) {
+                    resolve(achievementsSent);
+                }
+            }).catch((err) => {
+                reject(err);
+            });
+        }
+    });
+};
+
+const insertOneAchievement = (requestedId, achievementType, achievementName, senderId) => {
+    return new Promise(function(resolve, reject) {
+        const q = `INSERT INTO achievements (student_id, achievement_type, achievement_name, sender_id)
+                    VALUES ($1, $2, $3, $4);`;
+        const params = [requestedId, achievementType, achievementName, senderId];
+        db.query(q, params).then((res) => {
+            resolve(res);
+        }).catch((err) => {
+            reject(err);
+        });
+    });
+};
+
+
 module.exports.checkIfUserExists = checkIfUserExists;
 module.exports.addNewUserToDb = addNewUserToDb;
 module.exports.getUserProfileInfo = getUserProfileInfo;
 module.exports.saveImageUrlToDb = saveImageUrlToDb;
-module.exports.insertOneAchievement = insertOneAchievement;
 module.exports.getAllAchievements = getAllAchievements;
 module.exports.getCountryOfUser = getCountryOfUser;
 module.exports.getAllStudentsFromCountry = getAllStudentsFromCountry;
+module.exports.giveAchievementToStudents = giveAchievementToStudents;
+module.exports.insertOneAchievement = insertOneAchievement;
