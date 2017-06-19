@@ -314,6 +314,13 @@ div.side-by-side-elements {
     height: 100px;
 }
 
+.event-logo {
+    margin-left: 100px;
+    margin-bottom: 30px;
+    width: 150px;
+    height: 150px;
+}
+
 #achievement-feed ul li div {
     position: relative;
     bottom: 0;

@@ -78,9 +78,12 @@ class AchievementSender extends Component {
                     </select>
                     <label for="achievement-name"></label>
                     <select name="achievement-name" onChange={this.handleAchivementChoice}>
+                        <option value="concentration">Concentration</option>
                         <option value="courage">Courage</option>
-                        <option value="effort">Great effort</option>
+                        <option value="great-effort">Great effort</option>
+                        <option value="perseverance">Perseverance</option>
                         <option value="respect">Respect</option>
+                        <option value="self-control">Self-Control</option>
                         <option value="discipline">Discipline</option>
                     </select>
                 </div>
