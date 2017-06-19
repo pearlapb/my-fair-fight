@@ -31,11 +31,27 @@ app.use('/', require('./routes/userProfileRoutes.js'));
 app.use('/', require('./routes/updateUserProfileRoutes.js'));
 app.use('/', require('./routes/userAchievementsRoutes.js'));
 
+app.get('/admin', function(req, res) {
+    if (!req.session.user) {
+        res.redirect('/identification');
+    } else {
+        if (req.session.user.userType != 'FFmember') {
+            res.redirect('/');
+        } else {
+            res.sendFile(__dirname + '/index.html');
+        }
+    }
+});
+
 app.get('/', function(req, res) {
     if (!req.session.user) {
         res.redirect('/identification');
     } else {
-        res.sendFile(__dirname + '/index.html');
+        if (req.session.user.userType == 'FFmember') {
+            res.redirect('/admin');
+        } else {
+            res.sendFile(__dirname + '/index.html');
+        }
     }
 });
 
@@ -46,6 +62,7 @@ app.get('/identification', function(req, res) {
         res.sendFile(__dirname + '/index.html');
     }
 });
+
 
 app.get('*', function(req, res) {
     if (!req.session.user) {

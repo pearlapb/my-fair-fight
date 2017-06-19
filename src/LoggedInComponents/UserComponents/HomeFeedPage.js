@@ -3,11 +3,17 @@ import { Router, Route, Link, IndexRoute, hashHistory, browserHistory} from 'rea
 import axios from 'axios';
 import ProgressBars from './ProgressBars.js';
 import Timeline from './Timeline.js';
+import AchievementSender from './AchievementSender.js';
+import EncouragingSentence from './EncouragingSentence.js';
 
 class HomeFeedPage extends Component {
     constructor(props) {
         super(props);
         this.state = {};
+    }
+
+    componentDidMount() {
+        console.log(this.props.userType);
     }
 
     render() {
@@ -18,12 +24,13 @@ class HomeFeedPage extends Component {
                         <img src={this.props.profilePicUrl}/>
                         <div>
                             <h2>Hello, {this.props.firstName}!</h2>
-                            <p>You're doing great!</p>
+                            {this.props.isStudent && <EncouragingSentence />}
                         </div>
                     </div>
-                    <ProgressBars />
+                    {this.props.isStudent && <ProgressBars />}
                 </div>
-                <Timeline />
+                {this.props.isStudent && <Timeline />}
+                {this.props.isTeacher && <AchievementSender />}
             </div>
         )
     }

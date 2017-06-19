@@ -24,8 +24,14 @@ class Registration extends Component {
             } else {
                 this.setState({ isStudent: false })
             }
+        } else if (e.target.value == 'teacher') {
+            if (e.target.checked) {
+                this.setState({ isTeacher: true, userType: e.target.value })
+            } else {
+                this.setState({ isTeacher: false })
+            }
         } else {
-            this.setState({ isStudent: false, userType: e.target.value })
+            this.setState({ isStudent: false, isTeacher: false, isFFmember: true, userType: e.target.value })
         }
     }
 
@@ -35,7 +41,9 @@ class Registration extends Component {
         let newUserInfo;
         if (this.state.userType == 'student') {
             newUserInfo = { firstName, lastName, userName, pw, userType, age, country, city, school };
-        } else if (this.state.userType == 'teacher' || this.state.userType == 'FFmember' ) {
+        } else if (this.state.userType == 'teacher') {
+            newUserInfo = { firstName, lastName, userName, pw, userType, country };
+        } else if (this.state.userType == 'FFmember') {
             newUserInfo = { firstName, lastName, userName, pw, userType };
         }
         for (var key in newUserInfo) {
@@ -86,6 +94,16 @@ class Registration extends Component {
                         <label for="student">student</label>
                     </div>
                 </div>
+
+                {this.state.isTeacher &&
+                    <div>
+                        <label for="country">Country</label>
+                        <select name="country" onChange={this.handleInput} className="blue-background-style">
+                            <option selected value="zimbabwe">Zimbabwe</option>
+                            <option value="india">India</option>
+                        </select>
+                    </div>
+                }
 
                 {this.state.isStudent &&
                     <div id="student-selections">

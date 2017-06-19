@@ -27,6 +27,7 @@ router.route('/registerNewUser')
                         if (result) {
                             req.session.user = {
                                 userId: result.rows[0].id,
+                                userType: result.rows[0].user_type,
                                 firstName: result.rows[0].first_name,
                                 lastName: result.rows[0].last_name,
                                 userName: result.rows[0].user_name,
@@ -59,6 +60,7 @@ router.route('/userLogin')
                 auth.checkPassword(userLoginInfo.pw, userInfo.rows[0].hashed_pw).then(function() {
                     req.session.user = {
                         userId: userInfo.rows[0].id,
+                        userType: userInfo.rows[0].user_type,
                         firstName: userInfo.rows[0].first_name,
                         lastName: userInfo.rows[0].last_name,
                         userName: userInfo.rows[0].user_name,

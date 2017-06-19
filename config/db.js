@@ -76,7 +76,7 @@ const addNewUserToDb = (newUserInfo) => {
 
 const getUserProfileInfo = (requestedId) => {
     return new Promise(function(resolve, reject) {
-        const q = 'SELECT id, user_type, user_name, first_name, last_name, profile_pic_url FROM users WHERE id = $1;';
+        const q = 'SELECT id, user_type, user_name, first_name, last_name, age, country, city, school, profile_pic_url FROM users WHERE id = $1;';
         const params = [requestedId];
         db.query(q, params).then(function(result) {
             resolve(result);
@@ -123,9 +123,40 @@ const getAllAchievements = (requestedId) => {
     });
 };
 
+const getCountryOfUser = (requestedId) => {
+    return new Promise(function(resolve, reject) {
+        const q = `SELECT country
+                    FROM users
+                    WHERE id = $1`;
+        const params = [requestedId];
+        db.query(q, params).then((res) => {
+            resolve(res);
+        }).catch((err) => {
+            reject(err);
+        });
+    });
+};
+
+const getAllStudentsFromCountry = (country) => {
+    return new Promise(function(resolve, reject) {
+        const q = `SELECT *
+                    FROM users
+                    WHERE country = $1
+                    AND user_type = 'student'`;
+        const params = [country];
+        db.query(q, params).then((res) => {
+            resolve(res);
+        }).catch((err) => {
+            reject(err);
+        });
+    });
+};
+
 module.exports.checkIfUserExists = checkIfUserExists;
 module.exports.addNewUserToDb = addNewUserToDb;
 module.exports.getUserProfileInfo = getUserProfileInfo;
 module.exports.saveImageUrlToDb = saveImageUrlToDb;
 module.exports.insertOneAchievement = insertOneAchievement;
 module.exports.getAllAchievements = getAllAchievements;
+module.exports.getCountryOfUser = getCountryOfUser;
+module.exports.getAllStudentsFromCountry = getAllStudentsFromCountry;

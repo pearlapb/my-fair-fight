@@ -6,9 +6,15 @@ import Identification from './LoggedOutComponents/Identification.js';
 import Login from './LoggedOutComponents/Login.js';
 import Registration from './LoggedOutComponents/Registration.js';
 
-import App from './LoggedInComponents/App.js';
-import HomeFeedPage from './LoggedInComponents/HomeFeedPage.js';
-import ProfilePage from './LoggedInComponents/ProfilePage.js';
+import App from './LoggedInComponents/UserComponents/App.js';
+import HomeFeedPage from './LoggedInComponents/UserComponents/HomeFeedPage.js';
+import ProfilePage from './LoggedInComponents/UserComponents/ProfilePage.js';
+
+import AdminApp from './LoggedInComponents/AdminComponents/AdminApp.js';
+import AdminHome from './LoggedInComponents/AdminComponents/AdminHome.js';
+import AdminProfile from './LoggedInComponents/AdminComponents/AdminProfile.js';
+
+
 
 const loggedOutRouter = (
     <Router history={hashHistory}>
@@ -19,7 +25,7 @@ const loggedOutRouter = (
     </Router>
 )
 
-const loggedInRouter = (
+const loggedInUserRouter = (
     <Router history={browserHistory}>
         <Route path="/" component={App}>
             <Route path="/profile" component={ProfilePage}/>
@@ -28,11 +34,22 @@ const loggedInRouter = (
     </Router>
 )
 
+const loggedInAdminRouter = (
+    <Router history={browserHistory}>
+        <Route path="/admin" component={AdminApp}>
+            <Route path="/admin/profile" component={AdminProfile}/>
+            <IndexRoute component={AdminHome}/>
+        </Route>
+    </Router>
+)
+
 let elem;
-if (location.pathname == '/identification') { //change to lowercase
+if (location.pathname == '/identification') {
     elem = loggedOutRouter;
+} else if (location.pathname == '/admin') {
+    elem = loggedInAdminRouter;
 } else {
-    elem = loggedInRouter;
+    elem = loggedInUserRouter;
 }
 
 ReactDOM.render(

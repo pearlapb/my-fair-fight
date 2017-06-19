@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router';
 
-class NavBarLI extends Component {
+class NavBarAdmin extends Component {
     constructor(props) {
         super(props);
         this.state = { showLargePopupMenu: false };
@@ -24,13 +24,13 @@ class NavBarLI extends Component {
     render() {
         return (
             <div className="nav-bar" id="nav-bar-LI">
-                <Link to="/"><img src="/public/assets/logo/my-ff-grey.svg"/></Link>
+                <Link to="/admin"><img src="/public/assets/logo/my-ff-grey.svg"/></Link>
                 {this.state.showLargePopupMenu && <div id="large-popup-menu" className="new-blue">
                     <img id="nav-bar-cross" src="/public/assets/cross/cross-white.svg" onClick={this.showLargePopupMenu}/>
                     <ul>
                         <li onClick={this.handleLogout}>Logout</li>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link onClick={this.showLargeMenu} to="profile">My Profile</Link></li>
+                        <li><Link to="/admin">Home</Link></li>
+                        <li><Link onClick={this.showLargeMenu} to="/admin/profile">My Profile</Link></li>
                     </ul>
                 </div>}
                 <img id="nav-bar-cross" src="/public/assets/cross/cross-blue.svg" onClick={this.showLargePopupMenu}/>
@@ -39,4 +39,4 @@ class NavBarLI extends Component {
     }
 }
 
-export default NavBarLI;
+export default NavBarAdmin;
