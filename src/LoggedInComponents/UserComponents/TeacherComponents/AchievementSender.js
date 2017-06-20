@@ -14,7 +14,6 @@ class AchievementSender extends Component {
     componentDidMount() {
         axios.get('/getCountryOfUser').then((result) => {
             axios.get(`/getAllStudentsFromCountry?country=${result.data.country}`).then((res) => {
-                console.log(res);
                 this.setState({
                     students: res.data.result,
                     achievementMap: {
@@ -69,7 +68,6 @@ class AchievementSender extends Component {
         if (!this.state.students) {
             return null;
         } else {
-            console.log(this.state.students);
             return (this.state.students.map((student) => {
                 return (
                     <div className="student-summary">

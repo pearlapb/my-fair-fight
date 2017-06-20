@@ -13,10 +13,33 @@ class HomeFeedPage extends Component {
     constructor(props) {
         super(props);
         this.state = {};
+        this.getStudentFeed = this.getStudentFeed.bind(this);
+        this.refreshFeed = this.refreshFeed.bind(this);
     }
 
     componentDidMount() {
-        console.log(this.props.userType);
+        this.getStudentFeed();
+    }
+
+    getStudentFeed() {
+        let feedContent = [], achievementList = [];
+        axios.get('/getAllAchievements').then((achievements) => {
+            achievements.data.result.map((achievement) => {
+                feedContent.push(achievement);
+                achievementList.push(achievement)
+            })
+            axios.get('/getAllStudentFeed').then((feed) => {
+                feed.data.result.map((post) => {
+                    feedContent.push(post)
+                })
+                // ORDER ARRAY BY DATE!!
+                this.setState({ feedContent: feedContent, achievementList: achievementList })
+            })
+        });
+    }
+
+    refreshFeed() {
+        this.getStudentFeed();
     }
 
     render() {
@@ -30,9 +53,9 @@ class HomeFeedPage extends Component {
                             {this.props.isStudent && <EncouragingSentence />}
                         </div>
                     </div>
-                    {this.props.isStudent && <ProgressBars />}
+                    {this.props.isStudent && <ProgressBars achievementList={this.state.achievementList}/>}
                 </div>
-                {this.props.isStudent && <Timeline />}
+                {this.props.isStudent && <Timeline feedContent={this.state.feedContent} refreshFeed={this.refreshFeed}/>}
                 {this.props.isTeacher && <AchievementSender />}
             </div>
         )

@@ -7,35 +7,13 @@ class Timeline extends Component {
     constructor(props) {
         super(props);
         this.state = {};
-        this.refreshFeed = this.refreshFeed.bind(this);
-    }
-
-    componentDidMount() {
-        let feedContent = [];
-        axios.get('/getAllAchievements').then((achievements) => {
-            achievements.data.result.map((achievement) => {
-                feedContent.push(achievement)
-            })
-            axios.get('/getAllStudentFeed').then((feed) => {
-                feed.data.result.map((post) => {
-                    feedContent.push(post)
-                })
-                // ORDER ARRAY BY DATE!!
-                console.log('this is the feed content', feedContent);
-                this.setState({ feedContent: feedContent })
-            })
-        });
-    }
-
-    refreshFeed(newFeed) {
-        this.setState({ fullFeed: newFeed });
     }
 
     render() {
 
         let feedContent = '';
-        if (this.state.feedContent) {
-            feedContent = this.state.feedContent.map((item) => {
+        if (this.props.feedContent) {
+            feedContent = this.props.feedContent.map((item) => {
                 let imageUrl, sentence, message;
                 if (item.achievement_type) {
                     imageUrl = `/public/assets/badges/${item.achievement_type}/${item.achievement_name}.svg`;
@@ -64,7 +42,7 @@ class Timeline extends Component {
         }
         return (
             <section id="achievement-feed">
-                <PostToFeed refreshFeed={this.refreshFeed}/>
+                <PostToFeed refreshFeed={this.props.refreshFeed} feedContent={this.props.feedContent}/>
                 <ul>
                     {feedContent}
                 </ul>

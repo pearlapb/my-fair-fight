@@ -22,7 +22,7 @@ class PostToFeed extends Component {
         } else if (!file) {
             var message = { message: this.textInput.value};
             axios.post('/sendNewPostForFeed', message).then((res) => {
-                this.props.refreshFeed(res);
+                this.props.refreshFeed();
             })
         }
 

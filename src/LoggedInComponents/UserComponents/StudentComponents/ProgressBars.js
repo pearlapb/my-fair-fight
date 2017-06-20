@@ -23,17 +23,33 @@ class ProgressBars extends Component {
         }
         let progressTypeArray = this.state.progressMap[progressType], progressStages = '';
         progressStages =  progressTypeArray.map((stage) => {
-            let stageIndex = progressTypeArray.indexOf(stage);
-            if (stageIndex == 0) {
-                return <div id={stage} className="first-progress-point"></div>
-            } else if (stageIndex == progressTypeArray.length - 1) {
-                return <div id={stage} className="last-progress-point"></div>
+            let stageIndex = progressTypeArray.indexOf(stage), newClass = '';
+            var achieved = this.checkForProgressMade(stage) ? 'achieved' : '';
+            if (stageIndex === 0) {
+                newClass = `first-progress-point ${achieved}`;
+            } else if (stageIndex === progressTypeArray.length - 1) {
+                newClass = `last-progress-point ${achieved}`;
             } else {
-                return <div id={stage} className="progress-point"></div>
+                newClass = `progress-point ${achieved}`;
             }
+            return <div id={stage} className={newClass}></div>
         })
         return progressStages;
 
+    }
+
+    checkForProgressMade(stage) {
+        if (this.props.achievementList) {
+            let achieved = false;
+            this.props.achievementList.map((achievement) => {
+                if (stage == achievement.achievement_name) {
+                    return achieved = true;
+                }
+            });
+            return achieved;
+        } else {
+            return null;
+        }
     }
 
     render() {

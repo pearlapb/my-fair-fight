@@ -21,10 +21,8 @@ class AdminApp extends Component {
             } else {
                 this.setState({ isTeacher: true });
             }
-            console.log(res.data.result);
             const {userId, userType, userName, firstName, lastName, country, profilePicUrl, profileColor} = res.data.result;
             this.setState({ userId, userType, userName, firstName, lastName, country, profilePicUrl, profileColor });
-            console.log(this.state);
         })
     }
 
