@@ -27,9 +27,8 @@ app.use('/public', express.static(__dirname+ '/public'));
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
 app.use('/', require('./routes/loginAndRegRoutes.js'));
-app.use('/', require('./routes/userProfileRoutes.js'));
-app.use('/', require('./routes/uploadPicturesRoutes.js'));
-app.use('/', require('./routes/userAchievementsRoutes.js'));
+app.use('/', require('./routes/imageUploadRoutes.js'));
+app.use('/', require('./routes/userRoutes.js'));
 app.use('/', require('./routes/adminRoutes.js'));
 
 app.get('/admin', function(req, res) {

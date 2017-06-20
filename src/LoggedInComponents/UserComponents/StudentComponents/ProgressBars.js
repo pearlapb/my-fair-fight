@@ -12,7 +12,7 @@ class ProgressBars extends Component {
         this.setState({
             progressMap: {
                 belt: ["white", "yellow", "orange", "green", "blue", "brown", "black"],
-                kata: ["first", "second", "third", "fourth", "fifth"],
+                kata: ["1", "2", "3", "4", "5"],
             }
         })
     }

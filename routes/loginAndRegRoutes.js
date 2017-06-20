@@ -6,7 +6,6 @@ router.route('/getAllOngoingProjectsForReg')
 
     .get( (req, res) => {
         db.getAllOngoingProjectsForReg().then((result) => {
-            console.log(result);
             let countries = [], cities = [], schools = [];
             result.rows.map((project) => {
                 if (countries.indexOf(project.country) < 0) {
@@ -19,7 +18,6 @@ router.route('/getAllOngoingProjectsForReg')
                     schools.push(project.school);
                 }
             });
-            console.log(countries, cities, schools);
             res.json({ countries, cities, schools });
         }).catch((err) => {
             console.log(err);

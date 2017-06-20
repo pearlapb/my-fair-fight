@@ -27,13 +27,13 @@ class AchievementSender extends Component {
                             { value: "discipline", label: "Discipline" }
                         ],
                         "attendence": [
-                            { value: "1month", label: "1month" },
-                            { value: "3months", label: "3months" },
-                            { value: "6months", label: "6months" },
-                            { value: "1year", label: "1year" },
-                            { value: "2year", label: "2year" },
-                            { value: "2year", label: "2year" },
-                            { value: "2year", label: "2year" }
+                            { value: "first", label: "First Karate Class" },
+                            { value: "1month", label: "1 Month" },
+                            { value: "3months", label: "3 Months" },
+                            { value: "6months", label: "6 Months" },
+                            { value: "1year", label: "1 Year" },
+                            { value: "2years", label: "2 Years" },
+                            { value: "3years", label: "3 Years" }
                         ],
                         "belt": [
                             { value: "white", label: "white" },
@@ -45,16 +45,11 @@ class AchievementSender extends Component {
                             { value: "black", label: "black" }
                         ],
                         "kata": [
-                            { value: "first", label: "first" },
-                            { value: "second", label: "second" },
-                            { value: "third", label: "third" },
-                            { value: "fourth", label: "fourth" },
-                            { value: "fifth", label: "fifth" }
-                        ],
-                        "technique": [
-                            { value: "miaygeri", label: "miaygeri" },
-                            { value: "maywashigeri", label: "maywashigeri" },
-                            { value: "uramawashigeri", label: "uramawashigeri" }
+                            { value: "1", label: "First" },
+                            { value: "2", label: "Second" },
+                            { value: "3", label: "Third" },
+                            { value: "4", label: "Fourth" },
+                            { value: "5", label: "Fifth" }
                         ],
                     }
                 })
@@ -144,7 +139,6 @@ class AchievementSender extends Component {
                         <option value="behaviour">Behaviour</option>
                         <option value="attendence">attendence</option>
                         <option value="belt">Belt</option>
-                        <option value="technique">Technique</option>
                         <option value="kata">Kata</option>
                     </select>
                     <label for="achievement-name"></label>

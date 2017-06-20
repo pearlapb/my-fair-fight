@@ -15,9 +15,7 @@ router.route('/getAllProjects')
 router.route('/saveNewProject')
 
     .post( (req, res) => {
-        console.log(req.body);
         db.saveNewProject(req.body).then((result) => {
-            console.log(result.rows);
             res.json({ result: result.rows });
         }).catch((err) => {
             console.log(err);

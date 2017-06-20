@@ -5,13 +5,13 @@ import axios from 'axios';
 class StudentDiary extends Component {
     constructor(props) {
         super(props);
-        this.state = { behaviour: [], belt: [], kata: [], technique: [], showBehaviourBadges: false, showBeltsBadges: false, showKataBadges: false, showTechniqueBadges: false };
+        this.state = { behaviour: [], belt: [], kata: [], attendence: [], showBehaviourBadges: false, showBeltsBadges: false, showKataBadges: false, showAttendenceBadges: false };
         this.showBadges = this.showBadges.bind(this);
     }
 
     componentDidMount() {
         axios.get('/getAllAchievements').then((res) => {
-            const { behaviour, belt, kata, technique } = this.state;
+            const { behaviour, belt, kata, attendence } = this.state;
             res.data.result.map((badge) => {
                 if (badge.achievement_type == "behaviour") {
                     behaviour.push(badge.achievement_name);
@@ -19,23 +19,23 @@ class StudentDiary extends Component {
                     belt.push(badge.achievement_name);
                 } else if (badge.achievement_type == "kata") {
                     kata.push(badge.achievement_name);
-                } else if (badge.achievement_type == "technique") {
-                    technique.push(badge.achievement_name);
+                } else if (badge.achievement_type == "attendence") {
+                    attendence.push(badge.achievement_name);
                 }
             })
-            this.setState({ behaviour, belt, kata, technique })
+            this.setState({ behaviour, belt, kata, attendence })
         })
     }
 
     showBadges(e) {
         if (e.target.name == "behaviour") {
-            this.setState({ showBehaviourBadges: !this.state.showBehaviourBadges, showBeltsBadges: false, showKataBadges: false, showTechniqueBadges: false })
+            this.setState({ showBehaviourBadges: !this.state.showBehaviourBadges, showBeltsBadges: false, showKataBadges: false, showAttendenceBadges: false })
         } else if (e.target.name == "belt") {
-            this.setState({ showBeltsBadges: !this.state.showBeltsBadges, showBehaviourBadges: false, showKataBadges: false, showTechniqueBadges: false })
+            this.setState({ showBeltsBadges: !this.state.showBeltsBadges, showBehaviourBadges: false, showKataBadges: false, showAttendenceBadges: false })
         } else if (e.target.name == "kata") {
-            this.setState({ showKataBadges: !this.state.showKataBadges, showBehaviourBadges:false, showBeltsBadges: false, showTechniqueBadges: false })
-        } else if (e.target.name == "technique") {
-            this.setState({ showTechniqueBadges: !this.state.showTechniqueBadges, showBehaviourBadges: false, showBeltsBadges: false, showKataBadges: false })
+            this.setState({ showKataBadges: !this.state.showKataBadges, showBehaviourBadges:false, showBeltsBadges: false, showAttendenceBadges: false })
+        } else if (e.target.name == "attendence") {
+            this.setState({ showAttendenceBadges: !this.state.showAttendenceBadges, showBehaviourBadges: false, showBeltsBadges: false, showKataBadges: false })
         }
     }
 
@@ -68,7 +68,7 @@ class StudentDiary extends Component {
                     <button className="white badges" onClick={this.showBadges} name="behaviour">Behaviour Badges</button>
                     <button className="white badges" onClick={this.showBadges} name="belt">Belts Badges</button>
                     <button className="white badges" onClick={this.showBadges} name="kata">Kata Badges</button>
-                    <button className="white badges" onClick={this.showBadges} name="technique">Technique Badges</button>
+                    <button className="white badges" onClick={this.showBadges} name="attendence">Attendence Badges</button>
                 </div>
                 {this.state.showBehaviourBadges &&
                     <div className="badge-page">
@@ -85,9 +85,9 @@ class StudentDiary extends Component {
                         {this.makeBadgeListFor(this.state.kata, 'kata')}
                     </div>
                 }
-                {this.state.showTechniqueBadges &&
+                {this.state.showAttendenceBadges &&
                     <div className="badge-page">
-                        {this.makeBadgeListFor(this.state.technique, 'technique')}
+                        {this.makeBadgeListFor(this.state.attendence, 'attendence')}
                     </div>
                 }
             </div>
