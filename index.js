@@ -30,6 +30,7 @@ app.use('/', require('./routes/loginAndRegRoutes.js'));
 app.use('/', require('./routes/userProfileRoutes.js'));
 app.use('/', require('./routes/uploadPicturesRoutes.js'));
 app.use('/', require('./routes/userAchievementsRoutes.js'));
+app.use('/', require('./routes/adminRoutes.js'));
 
 app.get('/admin', function(req, res) {
     if (!req.session.user) {

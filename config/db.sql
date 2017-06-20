@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS projects;
 DROP TABLE IF EXISTS student_feed;
 DROP TABLE IF EXISTS achievements;
 DROP TABLE IF EXISTS users;
@@ -41,4 +42,13 @@ CREATE TABLE student_feed (
     photo VARCHAR,
     sender_id INTEGER,
     created_at BIGSERIAL
+);
+
+CREATE TABLE projects (
+    id SERIAL PRIMARY KEY,
+    country VARCHAR NOT NULL,
+    city VARCHAR NOT NULL,
+    school VARCHAR NOT NULL,
+    teacher VARCHAR,
+    status VARCHAR
 );

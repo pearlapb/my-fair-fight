@@ -1,10 +1,10 @@
 var express = require('express'), router = express.Router();
-const db = require('../config/dbUser.js');
+const db = require('../config/dbAdmin.js');
 
-router.route('/getAllAchievements')
+router.route('/getAllProjects')
 
     .get( (req, res) => {
-        db.getAllAchievements(req.session.user.userId).then((result) => {
+        db.getAllProjects().then((result) => {
             res.json({ result: result.rows });
         }).catch((err) => {
             console.log(err);
@@ -12,21 +12,11 @@ router.route('/getAllAchievements')
         });
     });
 
-router.route('/giveAchievementToStudents')
+router.route('/saveNewProject')
 
     .post( (req, res) => {
-        db.giveAchievementToStudents(req.body.selectedStudents, req.body.achievementType, req.body.achievementName, req.session.user.userId).then((result) => {
-            res.json({ result: result });
-        }).catch((err) => {
-            console.log(err);
-            res.json({ error: true });
-        });
-    });
-
-router.route('/getAllStudentFeed')
-
-    .get( (req, res) => {
-        db.getAllStudentFeed(req.session.user.userId).then((result) => {
+        console.log(req.body);
+        db.saveNewProject(req.body).then((result) => {
             console.log(result.rows);
             res.json({ result: result.rows });
         }).catch((err) => {
@@ -34,5 +24,17 @@ router.route('/getAllStudentFeed')
             res.json({ error: true });
         });
     });
+
+router.route('/closeOngoingProject')
+
+    .post( (req, res) => {
+        db.closeOngoingProject(Number(req.body.projectId)).then((result) => {
+            res.json({ result: result.rows });
+        }).catch((err) => {
+            console.log(err);
+            res.json({ error: true });
+        });
+    });
+
 
 module.exports = router;
