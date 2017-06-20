@@ -9,12 +9,12 @@ class CountryOptions extends Component {
     }
 
     render() {
+
         return (
             <div>
                 <label for="country">Country</label>
                 <select name="country" onChange={this.props.handleInput} className="blue-background-style">
-                    <option selected value="zimbabwe">Zimbabwe</option>
-                    <option value="india">India</option>
+                    {this.props.makeProjectSelections('countries', this.props.countries)}
                 </select>
             </div>
         )

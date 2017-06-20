@@ -1,7 +1,31 @@
 var express = require('express'), router = express.Router();
 const db = require('../config/db.js');
 const auth = require('../config/auth.js');
-const chalk = require('chalk');
+
+router.route('/getAllOngoingProjectsForReg')
+
+    .get( (req, res) => {
+        db.getAllOngoingProjectsForReg().then((result) => {
+            console.log(result);
+            let countries = [], cities = [], schools = [];
+            result.rows.map((project) => {
+                if (countries.indexOf(project.country) < 0) {
+                    countries.push(project.country);
+                }
+                if (cities.indexOf(project.city) < 0) {
+                    cities.push(project.city);
+                }
+                if (schools.indexOf(project.school) < 0) {
+                    schools.push(project.school);
+                }
+            });
+            console.log(countries, cities, schools);
+            res.json({ countries, cities, schools });
+        }).catch((err) => {
+            console.log(err);
+            res.json({ error: true });
+        });
+    });
 
 router.route('/registerNewUser')
 

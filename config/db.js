@@ -1,6 +1,19 @@
 var spicedPg = require('spiced-pg');
 var db = spicedPg("postgres:funkyChicken:letmein@localhost:5432/myfairfight");
 
+const getAllOngoingProjectsForReg = () => {
+    return new Promise(function(resolve, reject) {
+        const q = `SELECT *
+                    FROM projects
+                    WHERE status = 'ongoing';`;
+        db.query(q, []).then((result) => {
+            resolve(result);
+        }).catch((err) => {
+            reject(err);
+        });
+    });
+};
+
 const checkIfUserExists = (userInfo) => {
     return new Promise(function(resolve, reject) {
         const q = `SELECT *
@@ -76,3 +89,4 @@ const addNewUserToDb = (newUserInfo) => {
 
 module.exports.checkIfUserExists = checkIfUserExists;
 module.exports.addNewUserToDb = addNewUserToDb;
+module.exports.getAllOngoingProjectsForReg = getAllOngoingProjectsForReg;

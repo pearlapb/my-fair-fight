@@ -14,6 +14,16 @@ class Registration extends Component {
         this.handleInput = this.handleInput.bind(this);
         this.handleRegistrationSubmit = this.handleRegistrationSubmit.bind(this);
         this.handleCheckChange = this.handleCheckChange.bind(this);
+        this.makeProjectSelections = this.makeProjectSelections.bind(this);
+    }
+
+    componentWillMount() {
+        if (!this.state.countries && !this.state.cities && !this.state.school) {
+            axios.get('/getAllOngoingProjectsForReg').then((result) => {
+                const {countries, cities, schools} = result.data;
+                this.setState({countries, cities, schools})
+            })
+        }
     }
 
     handleInput(e) {
@@ -74,6 +84,18 @@ class Registration extends Component {
         })
     }
 
+    makeProjectSelections(selectionType, selectionArray) {
+        selectionType = '';
+        if (!selectionArray) {
+            return null;
+        } else {
+            selectionType = selectionArray.map((item) => {
+                return ( <option value={item}>{item}</option> )
+            })
+            return selectionType;
+        }
+    }
+
     render() {
         return (
             <form onSubmit={this.handleRegistrationSubmit.bind(this)} className="reg-login-forms">
@@ -94,9 +116,9 @@ class Registration extends Component {
                 {this.state.isStudent &&
                     <div id="student-selections">
                         <AgeOptions handleInput={this.handleInput}/>
-                        <CountryOptions handleInput={this.handleInput}/>
-                        <CityOptions handleInput={this.handleInput}/>
-                        <SchoolOptions handleInput={this.handleInput}/>
+                        <CountryOptions countries={this.state.countries} makeProjectSelections={this.makeProjectSelections} handleInput={this.handleInput}/>
+                        <CityOptions cities={this.state.cities} makeProjectSelections={this.makeProjectSelections} handleInput={this.handleInput}/>
+                        <SchoolOptions schools={this.state.schools} makeProjectSelections={this.makeProjectSelections} handleInput={this.handleInput}/>
                     </div>
                 }
 

@@ -9,14 +9,14 @@ class SchoolOptions extends Component {
     }
 
     render() {
+
+        let schools = "schools";
+
         return (
             <div>
                 <label for="school">School</label>
                 <select name="school" onChange={this.props.handleInput} className="blue-background-style">
-                    <option selected value="nagleHouse">Nagle House</option>
-                    <option value="otherHouse">Other House</option>
-                    <option value="asha" selected>Asha</option>
-                    <option value="disha" selected>Disha</option>
+                    {this.props.makeProjectSelections('schools', this.props.schools)}
                 </select>
             </div>
         )

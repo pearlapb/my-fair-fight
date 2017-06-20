@@ -9,12 +9,14 @@ class CityOptions extends Component {
     }
 
     render() {
+
+        let cities = "cities";
+
         return (
             <div>
                 <label for="city">City</label>
                 <select name="city" onChange={this.props.handleInput} className="blue-background-style">
-                    <option selected value="marondera">Marondera</option>
-                    <option value="varanasi">Varanasi</option>
+                    {this.props.makeProjectSelections('cities', this.props.cities)}
                 </select>
             </div>
         )
