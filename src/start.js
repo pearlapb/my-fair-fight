@@ -14,6 +14,12 @@ import AdminApp from './LoggedInComponents/AdminComponents/AdminApp.js';
 import AdminHome from './LoggedInComponents/AdminComponents/AdminHome.js';
 import AdminProfile from './LoggedInComponents/AdminComponents/AdminProfile.js';
 
+import EditProjects from './LoggedInComponents/AdminComponents/AdminPowersPages/EditProjects.js';
+import ManageUsers from './LoggedInComponents/AdminComponents/AdminPowersPages/ManageUsers.js';
+import ProjectStats from './LoggedInComponents/AdminComponents/AdminPowersPages/ProjectStats.js';
+import UserProfiles from './LoggedInComponents/AdminComponents/AdminPowersPages/UserProfiles.js';
+
+
 
 
 const loggedOutRouter = (
@@ -38,6 +44,10 @@ const loggedInAdminRouter = (
     <Router history={browserHistory}>
         <Route path="/admin" component={AdminApp}>
             <Route path="/admin/profile" component={AdminProfile}/>
+            <Route path="/admin/projects" component={EditProjects}/>
+            <Route path="/admin/manage-users" component={ManageUsers}/>
+            <Route path="/admin/stats" component={ProjectStats}/>
+            <Route path="/admin/user-profiles" component={UserProfiles}/>
             <IndexRoute component={AdminHome}/>
         </Route>
     </Router>

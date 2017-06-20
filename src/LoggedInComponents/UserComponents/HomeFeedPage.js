@@ -35,7 +35,6 @@ class HomeFeedPage extends Component {
                 feedContent.sort((a, b) => {
                     return a.created_at - b.created_at;
                 })
-                console.log(feedContent);
                 this.setState({ feedContent, achievementList })
             })
         });
