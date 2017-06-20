@@ -29,8 +29,8 @@ class NavBarUser extends Component {
                     <img id="nav-bar-cross" src="/public/assets/cross/cross-white.svg" onClick={this.showLargePopupMenu}/>
                     <ul>
                         <li onClick={this.handleLogout}>Logout</li>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link onClick={this.showLargeMenu} to="profile">My Profile</Link></li>
+                        <li><Link onClick={this.showLargePopupMenu} to="/">Home</Link></li>
+                        <li><Link onClick={this.showLargePopupMenu} to="profile">My Profile</Link></li>
                     </ul>
                 </div>}
                 <img id="nav-bar-cross" src="/public/assets/cross/cross-blue.svg" onClick={this.showLargePopupMenu}/>
