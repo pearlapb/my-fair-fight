@@ -227,7 +227,7 @@ div.side-by-side-elements {
     width: 250px;
     height: 250px;
     border-radius: 50px;
-    border: 2px solid #2948ff;
+    /*border: 2px solid #2948ff;*/
 }
 
 #profile-summary > #photo > div {
@@ -288,12 +288,34 @@ div.side-by-side-elements {
     width: 40px;
 }
 
+.achieved.green {
+    background:green ; /* fallback for old browsers */
+}
+.achieved.black {
+    background: black; /* fallback for old browsers */
+}
+.achieved.blue {
+    background: blue; /* fallback for old browsers */
+}
+.achieved.brown {
+    background: brown; /* fallback for old browsers */
+}
+.achieved.orange {
+    background: orange; /* fallback for old browsers */
+}
+.achieved.yellow {
+    background: yellow; /* fallback for old browsers */
+}
+.achieved.white {
+    background: #efe6c8; /* fallback for old browsers */
+}
+
 .achieved {
     background: #2948ff; /* fallback for old browsers */
     background: -webkit-linear-gradient(to top, #2948ff, #396afc, #2948ff); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to top, #2948ff, #396afc, #2948ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
 }
+
 
 /*=========================================*/
 /*============= POST TO FEED ==============*/

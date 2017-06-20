@@ -10,10 +10,9 @@ class Timeline extends Component {
     }
 
     render() {
-
         let feedContent = '';
         if (this.props.feedContent) {
-            feedContent = this.props.feedContent.map((item) => {
+            feedContent = this.props.feedContent.reverse().map((item) => {
                 let imageUrl, sentence, message;
                 if (item.achievement_type) {
                     imageUrl = `/public/assets/badges/${item.achievement_type}/${item.achievement_name}.svg`;

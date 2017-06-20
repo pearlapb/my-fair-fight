@@ -31,7 +31,7 @@ CREATE TABLE achievements (
     badge_image VARCHAR,
     sender_id INTEGER,
     comment VARCHAR,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at BIGSERIAL
 );
 
 CREATE TABLE student_feed (
@@ -40,5 +40,5 @@ CREATE TABLE student_feed (
     message VARCHAR,
     photo VARCHAR,
     sender_id INTEGER,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at BIGSERIAL
 );

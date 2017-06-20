@@ -32,8 +32,11 @@ class HomeFeedPage extends Component {
                 feed.data.result.map((post) => {
                     feedContent.push(post)
                 })
-                // ORDER ARRAY BY DATE!!
-                this.setState({ feedContent: feedContent, achievementList: achievementList })
+                feedContent.sort((a, b) => {
+                    return a.created_at - b.created_at;
+                })
+                console.log(feedContent);
+                this.setState({ feedContent, achievementList })
             })
         });
     }

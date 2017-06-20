@@ -25,12 +25,13 @@ class ProgressBars extends Component {
         progressStages =  progressTypeArray.map((stage) => {
             let stageIndex = progressTypeArray.indexOf(stage), newClass = '';
             var achieved = this.checkForProgressMade(stage) ? 'achieved' : '';
+            var beltColor = progressType === 'belt' ? `${stage}` : '';
             if (stageIndex === 0) {
-                newClass = `first-progress-point ${achieved}`;
+                newClass = `first-progress-point ${beltColor} ${achieved}`;
             } else if (stageIndex === progressTypeArray.length - 1) {
-                newClass = `last-progress-point ${achieved}`;
+                newClass = `last-progress-point ${beltColor} ${achieved}`;
             } else {
-                newClass = `progress-point ${achieved}`;
+                newClass = `progress-point ${beltColor} ${achieved}`;
             }
             return <div id={stage} className={newClass}></div>
         })

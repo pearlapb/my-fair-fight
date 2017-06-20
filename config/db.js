@@ -34,13 +34,13 @@ const addNewUserToDb = (newUserInfo) => {
                 newUserInfo.country,
                 newUserInfo.city,
                 newUserInfo.school,
-                'new-blue',
+                'bloody-mary',
                 '/public/assets/unknown.png'
             ];
         // IF NEW USER IS A TEACHER (add coutry later on!)
         } else if (newUserInfo.userType == 'teacher') {
-            q = `INSERT INTO users (user_type, first_name, last_name, user_name, hashed_pw, country, profile_pic_url)
-                        VALUES ($1, $2, $3, $4, $5, $6, $7)
+            q = `INSERT INTO users (user_type, first_name, last_name, user_name, hashed_pw, country, profile_pic_url, profile_color)
+                        VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
                         RETURNING *;`;
             params = [
                 newUserInfo.userType,
@@ -49,12 +49,13 @@ const addNewUserToDb = (newUserInfo) => {
                 newUserInfo.userName,
                 newUserInfo.hashedPw,
                 newUserInfo.country,
-                '/public/assets/unknown.png'
+                '/public/assets/unknown.png',
+                'new-blue'
             ];
         // IF NEW USER IS A FF MEMBER
         } else if (newUserInfo.userType == 'FFmember') {
-            q = `INSERT INTO users (user_type, first_name, last_name, user_name, hashed_pw, profile_pic_url)
-                        VALUES ($1, $2, $3, $4, $5, $6)
+            q = `INSERT INTO users (user_type, first_name, last_name, user_name, hashed_pw, profile_pic_url, profile_color)
+                        VALUES ($1, $2, $3, $4, $5, $6, $7)
                         RETURNING *;`;
             params = [
                 newUserInfo.userType,
@@ -62,7 +63,8 @@ const addNewUserToDb = (newUserInfo) => {
                 newUserInfo.lastName,
                 newUserInfo.userName,
                 newUserInfo.hashedPw,
-                '/public/assets/unknown.png'
+                '/public/assets/unknown.png',
+                'rose-water'
             ];
         }
         db.query(q, params).then(function(results) {
@@ -169,9 +171,9 @@ const giveAchievementToStudents = (selectedStudents, achievementType, achievemen
 
 const insertOneAchievement = (requestedId, achievementType, achievementName, senderId) => {
     return new Promise(function(resolve, reject) {
-        const q = `INSERT INTO achievements (student_id, achievement_type, achievement_name, sender_id)
-                    VALUES ($1, $2, $3, $4);`;
-        const params = [requestedId, achievementType, achievementName, senderId];
+        const q = `INSERT INTO achievements (student_id, achievement_type, achievement_name, sender_id, created_at)
+                    VALUES ($1, $2, $3, $4, $5);`;
+        const params = [requestedId, achievementType, achievementName, senderId, Number(Date.now())];
         db.query(q, params).then((res) => {
             resolve(res);
         }).catch((err) => {
@@ -182,10 +184,10 @@ const insertOneAchievement = (requestedId, achievementType, achievementName, sen
 
 const savePostWithImageToDb = (requestedId, message, photo) => {
     return new Promise(function(resolve, reject) {
-        const q = `INSERT INTO student_feed (student_id, message, photo)
-                    VALUES ($1, $2, $3)
+        const q = `INSERT INTO student_feed (student_id, message, photo, created_at)
+                    VALUES ($1, $2, $3, $4)
                     RETURNING *;`;
-        const params = [requestedId, message, `/uploads/${photo}`];
+        const params = [requestedId, message, `/uploads/${photo}`, Number(Date.now())];
         db.query(q, params).then((res) => {
             resolve(res);
         }).catch((err) => {
@@ -195,11 +197,12 @@ const savePostWithImageToDb = (requestedId, message, photo) => {
 };
 
 const saveSimplePostToDb = (requestedId, message) => {
+    console.log(Number(Date.now()));
     return new Promise(function(resolve, reject) {
-        const q = `INSERT INTO student_feed (student_id, message)
-                    VALUES ($1, $2)
+        const q = `INSERT INTO student_feed (student_id, message, created_at)
+                    VALUES ($1, $2, $3)
                     RETURNING *;`;
-        const params = [requestedId, message];
+        const params = [requestedId, message, Number(Date.now())];
         db.query(q, params).then((res) => {
             resolve(res);
         }).catch((err) => {
