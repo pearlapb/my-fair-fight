@@ -8,27 +8,45 @@ class ProgressBars extends Component {
         this.state = {};
     }
 
+    componentDidMount() {
+        this.setState({
+            progressMap: {
+                belt: ["white", "yellow", "orange", "green", "blue", "brown", "black"],
+                kata: ["first", "second", "third", "fourth", "fifth"],
+            }
+        })
+    }
+
+    makeProgressStages(progressType) {
+        if (!this.state.progressMap) {
+            return null;
+        }
+        let progressTypeArray = this.state.progressMap[progressType], progressStages = '';
+        progressStages =  progressTypeArray.map((stage) => {
+            let stageIndex = progressTypeArray.indexOf(stage);
+            if (stageIndex == 0) {
+                return <div id={stage} className="first-progress-point"></div>
+            } else if (stageIndex == progressTypeArray.length - 1) {
+                return <div id={stage} className="last-progress-point"></div>
+            } else {
+                return <div id={stage} className="progress-point"></div>
+            }
+        })
+        return progressStages;
+
+    }
+
     render() {
         return (
             <div id="progress-bars">
                 <p>Belt Progress:</p>
                 <div id="belts-progress" className="progress-bar">
-                    <div id="yellow-belt" className="first-progress-point achieved"></div>
-                    <div id="orange-belt" className="progress-point"></div>
-                    <div id="green-belt" className="progress-point"></div>
-                    <div id="blue-belt" className="progress-point"></div>
-                    <div id="brown-belt" className="last-progress-point"></div>
+                    {this.makeProgressStages('belt')}
                 </div>
                 <p>Kata Progress:</p>
                 <div id="kata-progress" className="progress-bar">
-                    <div id="1-kata" className="first-progress-point achieved"></div>
-                    <div id="2-kata" className="progress-point"></div>
-                    <div id="3-kata" className="progress-point"></div>
-                    <div id="4-kata" className="progress-point"></div>
-                    <div id="5-kata" className="last-progress-point"></div>
+                    {this.makeProgressStages('kata')}
                 </div>
-                <div id="kicking-progress"></div>
-                <div id="sparing-progress"></div>
             </div>
         )
     }
