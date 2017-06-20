@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory} from 'react-router';
 import axios from 'axios';
 import UploadProfilePic from '../UploadProfilePic.js';
-import StudentDiary from './StudentDiary.js';
-import StudentSummaries from './StudentSummaries.js';
+import StudentDiary from './StudentComponents/StudentDiary.js';
+import StudentSummaries from './TeacherComponents/StudentSummaries.js';
 
 
 class ProfilePage extends Component {

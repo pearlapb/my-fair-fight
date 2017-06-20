@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS student_feed;
 DROP TABLE IF EXISTS achievements;
 DROP TABLE IF EXISTS users;
 
@@ -30,5 +31,14 @@ CREATE TABLE achievements (
     badge_image VARCHAR,
     sender_id INTEGER,
     comment VARCHAR,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE student_feed (
+    id SERIAL PRIMARY KEY,
+    student_id INTEGER NOT NULL,
+    message VARCHAR,
+    photo VARCHAR,
+    sender_id INTEGER,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

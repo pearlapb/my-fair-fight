@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory} from 'react-router';
 import axios from 'axios';
-import ProgressBars from './ProgressBars.js';
-import Timeline from './Timeline.js';
-import AchievementSender from './AchievementSender.js';
-import EncouragingSentence from './EncouragingSentence.js';
+
+import ProgressBars from './StudentComponents/ProgressBars.js';
+import Timeline from './StudentComponents/Timeline.js';
+import EncouragingSentence from './StudentComponents/EncouragingSentence.js';
+
+import AchievementSender from './TeacherComponents/AchievementSender.js';
+
 
 class HomeFeedPage extends Component {
     constructor(props) {

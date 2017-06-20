@@ -296,6 +296,50 @@ div.side-by-side-elements {
 }
 
 /*=========================================*/
+/*============= POST TO FEED ==============*/
+/*=========================================*/
+
+#post-to-feed {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    padding: 20px;
+    margin: 20px;
+}
+
+#post-to-feed > * {
+    margin: 10px;
+}
+
+#post-to-feed > textarea {
+    width: 60%;
+    height: 50px;
+    color: #2948ff;
+    font-size: 15px;
+    border: 1px solid black;
+}
+
+#post-to-feed > textarea::placeholder {
+    text-align: center;
+}
+
+#post-to-feed > div {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#post-to-feed > div > input, button {
+    padding: 5px;
+    background-color: white;
+    font-size: 15px;
+}
+
+
+/*=========================================*/
 /*============= TIMELINE FEED =============*/
 /*=========================================*/
 
@@ -336,8 +380,8 @@ div.side-by-side-elements {
 .event-logo {
     margin-left: 100px;
     margin-bottom: 30px;
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: auto;
 }
 
 #achievement-feed ul li div {

@@ -11,7 +11,6 @@ router.route('/registerNewUser')
                 res.json({alreadyRegistered: true});
             } else {
                 auth.hashPassword(req.body.pw).then(function(hash) {
-                    console.log(chalk.bgGreen('three'));
                     var newUserInfo = {
                         firstName: req.body.firstName,
                         lastName: req.body.lastName,

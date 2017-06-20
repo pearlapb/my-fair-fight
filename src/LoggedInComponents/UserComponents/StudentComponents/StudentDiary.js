@@ -11,7 +11,6 @@ class StudentDiary extends Component {
 
     componentDidMount() {
         axios.get('/getAllAchievements').then((res) => {
-            console.log(res.data.result);
             const { behaviour, belt, kata, technique } = this.state;
             res.data.result.map((badge) => {
                 if (badge.achievement_type == "behaviour") {
@@ -40,56 +39,31 @@ class StudentDiary extends Component {
         }
     }
 
+    makeBadgeListFor(badgeTypeState, badgeType) {
+        if (!badgeTypeState) {
+            return null;
+        } else {
+            if (badgeTypeState.length == 0) {
+                return (
+                    <p> No badges yet, but soon! </p>
+                );
+            } else {
+                let badgeList = badgeTypeState.map((badge) => {
+                    let badgeUrl = `/public/assets/badges/${badgeType}/${badge}.svg`;
+                    return (
+                        <img className="badge" src={badgeUrl}/>
+                    )
+                })
+                return badgeList;
+            }
+        }
+    }
+
     render() {
-
-        let behaviour = '';
-        if (this.state.behaviour) {
-            behaviour = this.state.behaviour.map((badge) => {
-                let badgeUrl = `/public/assets/badges/behaviour/${badge}.svg`;
-                return (
-                    <img className="badge" src={badgeUrl}/>
-                )
-            })
-        }
-
-        let belt = '';
-        if (this.state.belt) {
-            belt = this.state.belt.map((badge) => {
-                let badgeUrl = `/public/assets/badges/belt/${badge}.svg`;
-                return (
-                    <img className="badge" src={badgeUrl}/>
-                )
-            })
-        }
-
-        let kata = '';
-        if (this.state.kata) {
-            kata = this.state.kata.map((badge) => {
-                let badgeUrl = `/public/assets/badges/kata/${badge}.svg`;
-                return (
-                    <img className="badge" src={badgeUrl}/>
-                )
-            })
-        }
-
-        let technique = '';
-        if (this.state.technique) {
-            technique = this.state.technique.map((badge) => {
-                let badgeUrl = `/public/assets/badges/technique/${badge}.svg`;
-                return (
-                    <img className="badge" src={badgeUrl}/>
-                )
-            })
-        }
 
         return (
             <div id="student-diary">
                 <h3>Student Diary</h3>
-                <ul id="my-summary">
-                    <li>Hello</li>
-                    <li>Im</li>
-                    <li>Cool</li>
-                </ul>
                 <div className="inline-buttons">
                     <button className="white badges" onClick={this.showBadges} name="behaviour">Behaviour Badges</button>
                     <button className="white badges" onClick={this.showBadges} name="belt">Belts Badges</button>
@@ -98,22 +72,22 @@ class StudentDiary extends Component {
                 </div>
                 {this.state.showBehaviourBadges &&
                     <div className="badge-page">
-                        {behaviour}
+                        {this.makeBadgeListFor(this.state.behaviour, 'behaviour')}
                     </div>
                 }
                 {this.state.showBeltsBadges &&
                     <div className="badge-page">
-                        {belt}
+                        {this.makeBadgeListFor(this.state.belt, 'belt')}
                     </div>
                 }
                 {this.state.showKataBadges &&
                     <div className="badge-page">
-                        {kata}
+                        {this.makeBadgeListFor(this.state.kata, 'kata')}
                     </div>
                 }
                 {this.state.showTechniqueBadges &&
                     <div className="badge-page">
-                        {technique}
+                        {this.makeBadgeListFor(this.state.technique, 'technique')}
                     </div>
                 }
             </div>

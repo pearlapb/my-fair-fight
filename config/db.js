@@ -21,8 +21,7 @@ const addNewUserToDb = (newUserInfo) => {
         let q = '', params = [];
         // IF NEW USER IS A STUDENT
         if (newUserInfo.userType == 'student') {
-            console.log(chalk.bgGreen('im a student'));
-            q = `INSERT INTO users (user_type, first_name, last_name, user_name, hashed_pw, age, country, city, school, profile_pic_url, profile_color)
+            q = `INSERT INTO users (user_type, first_name, last_name, user_name, hashed_pw, age, country, city, school, profile_color, profile_pic_url)
                         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
                         RETURNING *;`;
             params = [
@@ -35,14 +34,13 @@ const addNewUserToDb = (newUserInfo) => {
                 newUserInfo.country,
                 newUserInfo.city,
                 newUserInfo.school,
-                '/public/assets/unknown.png',
-                'new-blue'
+                'new-blue',
+                '/public/assets/unknown.png'
             ];
         // IF NEW USER IS A TEACHER (add coutry later on!)
         } else if (newUserInfo.userType == 'teacher') {
-            console.log(chalk.bgGreen('im a teacher'));
-            q = `INSERT INTO users (user_type, first_name, last_name, user_name, hashed_pw, profile_pic_url)
-                        VALUES ($1, $2, $3, $4, $5, $6)
+            q = `INSERT INTO users (user_type, first_name, last_name, user_name, hashed_pw, country, profile_pic_url)
+                        VALUES ($1, $2, $3, $4, $5, $6, $7)
                         RETURNING *;`;
             params = [
                 newUserInfo.userType,
@@ -50,11 +48,11 @@ const addNewUserToDb = (newUserInfo) => {
                 newUserInfo.lastName,
                 newUserInfo.userName,
                 newUserInfo.hashedPw,
+                newUserInfo.country,
                 '/public/assets/unknown.png'
             ];
         // IF NEW USER IS A FF MEMBER
         } else if (newUserInfo.userType == 'FFmember') {
-            console.log(chalk.bgGreen('im a memeber'));
             q = `INSERT INTO users (user_type, first_name, last_name, user_name, hashed_pw, profile_pic_url)
                         VALUES ($1, $2, $3, $4, $5, $6)
                         RETURNING *;`;
@@ -110,6 +108,18 @@ const getAllAchievements = (requestedId) => {
         });
     });
 };
+
+const getAllStudentFeed = (requestedId) => {
+    return new Promise(function(resolve, reject) {
+        const q = `SELECT * FROM student_feed WHERE student_id = $1`;
+        const params = [requestedId];
+        db.query(q, params).then((res) => {
+            resolve(res);
+        }).catch((err) => {
+            reject(err);
+        });
+    });
+}
 
 const getCountryOfUser = (requestedId) => {
     return new Promise(function(resolve, reject) {
@@ -170,13 +180,44 @@ const insertOneAchievement = (requestedId, achievementType, achievementName, sen
     });
 };
 
+const savePostWithImageToDb = (requestedId, message, photo) => {
+    return new Promise(function(resolve, reject) {
+        const q = `INSERT INTO student_feed (student_id, message, photo)
+                    VALUES ($1, $2, $3)
+                    RETURNING *;`;
+        const params = [requestedId, message, `/uploads/${photo}`];
+        db.query(q, params).then((res) => {
+            resolve(res);
+        }).catch((err) => {
+            reject(err);
+        });
+    });
+};
+
+const saveSimplePostToDb = (requestedId, message) => {
+    return new Promise(function(resolve, reject) {
+        const q = `INSERT INTO student_feed (student_id, message)
+                    VALUES ($1, $2)
+                    RETURNING *;`;
+        const params = [requestedId, message];
+        db.query(q, params).then((res) => {
+            resolve(res);
+        }).catch((err) => {
+            reject(err);
+        });
+    });
+};
+
 
 module.exports.checkIfUserExists = checkIfUserExists;
 module.exports.addNewUserToDb = addNewUserToDb;
 module.exports.getUserProfileInfo = getUserProfileInfo;
 module.exports.saveImageUrlToDb = saveImageUrlToDb;
 module.exports.getAllAchievements = getAllAchievements;
+module.exports.getAllStudentFeed = getAllStudentFeed;
 module.exports.getCountryOfUser = getCountryOfUser;
 module.exports.getAllStudentsFromCountry = getAllStudentsFromCountry;
 module.exports.giveAchievementToStudents = giveAchievementToStudents;
 module.exports.insertOneAchievement = insertOneAchievement;
+module.exports.savePostWithImageToDb = savePostWithImageToDb;
+module.exports.saveSimplePostToDb = saveSimplePostToDb;
