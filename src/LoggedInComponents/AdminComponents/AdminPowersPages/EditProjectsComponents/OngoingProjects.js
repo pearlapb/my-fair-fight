@@ -29,8 +29,8 @@ class OngoingProjects extends Component {
 
     render() {
         return (
-            <div>
-                <h3>Ongoing Projects</h3>
+            <div className="edit-projects-class">
+                <h2>Ongoing Projects</h2>
                 <ul>
                     {this.listOngoingProjects()}
                 </ul>

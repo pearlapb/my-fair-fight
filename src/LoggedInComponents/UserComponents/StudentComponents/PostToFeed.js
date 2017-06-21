@@ -32,12 +32,12 @@ class PostToFeed extends Component {
 
         return (
             <form id="post-to-feed">
-                <textarea ref={(message) => { this.textInput = message; }} placeholder="Write your post here"></textarea>
-                <label htmlFor="choose-file">Upload a picture:</label>
-                <div>
+                <textarea ref={(message) => { this.textInput = message; }} placeholder="Post to your feed!"></textarea>
+                <div id="file-selection">
+                    <label htmlFor="choose-file">Upload a picture:</label>
                     <input type="file" id="choose-image"/>
-                    <button onClick={this.sendNewPost.bind(this)}>SEND</button>
                 </div>
+                <Link onClick={this.sendNewPost.bind(this)}>SEND</Link>
             </form>
         )
     }

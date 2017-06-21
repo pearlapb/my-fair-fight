@@ -23,7 +23,7 @@ class NavBarUser extends Component {
 
     render() {
         return (
-            <div className="nav-bar" id="nav-bar-LI">
+            <div className="nav-bar with-border" id="nav-bar-LI">
                 <Link to="/"><img src="/public/assets/logo/my-ff-grey.svg"/></Link>
                 {this.state.showLargePopupMenu && <div id="large-popup-menu" className="new-blue">
                     <img id="nav-bar-cross" src="/public/assets/cross/cross-white.svg" onClick={this.showLargePopupMenu}/>

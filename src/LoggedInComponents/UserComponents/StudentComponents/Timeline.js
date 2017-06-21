@@ -29,7 +29,7 @@ class Timeline extends Component {
                 }
                 return (
                     <li className="timeline-event">
-                        <img className="event-logo" src={imageUrl}/>
+                    <img className="event-logo" src={imageUrl}/>
                         <div className="event-content">
                             <h3>{sentence}</h3>
                             <p>{message}</p>

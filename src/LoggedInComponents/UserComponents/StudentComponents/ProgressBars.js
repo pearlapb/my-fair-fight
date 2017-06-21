@@ -56,13 +56,17 @@ class ProgressBars extends Component {
     render() {
         return (
             <div id="progress-bars">
-                <p>Belt Progress:</p>
-                <div id="belts-progress" className="progress-bar">
-                    {this.makeProgressStages('belt')}
+                <div className="progress-bar-wrapper">
+                    <div id="belts-progress" className="progress-bar">
+                        {this.makeProgressStages('belt')}
+                    </div>
+                    <p>Belts</p>
                 </div>
-                <p>Kata Progress:</p>
-                <div id="kata-progress" className="progress-bar">
-                    {this.makeProgressStages('kata')}
+                <div className="progress-bar-wrapper">
+                    <div id="kata-progress" className="progress-bar">
+                        {this.makeProgressStages('kata')}
+                    </div>
+                    <p>Kata</p>
                 </div>
             </div>
         )

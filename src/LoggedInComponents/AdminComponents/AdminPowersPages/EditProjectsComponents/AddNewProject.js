@@ -24,12 +24,15 @@ class AddNewProject extends Component {
 
     render() {
         return (
-            <div>
-                <input onChange={this.handleChange} name="country" placeholder="Country"></input>
-                <input onChange={this.handleChange} name="city" placeholder="City"></input>
-                <input onChange={this.handleChange} name="school" placeholder="School"></input>
-                <input onChange={this.handleChange} name="teacher" placeholder="Teacher"></input>
-                <button onClick={this.saveNewProject}>Save</button>
+            <div className="edit-projects-class">
+                <h2>Add new project:</h2>
+                <div id="add-new-project">
+                    <input onChange={this.handleChange} name="country" placeholder="Country"></input>
+                    <input onChange={this.handleChange} name="city" placeholder="City"></input>
+                    <input onChange={this.handleChange} name="school" placeholder="School"></input>
+                    <input onChange={this.handleChange} name="teacher" placeholder="Teacher"></input>
+                </div>
+                <Link onClick={this.saveNewProject}>Save</Link>
             </div>
         )
     }

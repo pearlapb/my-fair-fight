@@ -88,15 +88,17 @@ class ManageUsers extends Component {
                 <h2>Admins</h2>
                 {this.makeUserList('FFmember', this.state.admins)}
                 <p>Show:</p>
-                <select name="countryFilter" onChange={this.handleCountryFilter}>
+                <select name="countryFilter" className="achievement-selector" onChange={this.handleCountryFilter}>
                     <option value="all">All</option>
                     <option value="zimbabwe">Zimbabwe</option>
                     <option value="india">India</option>
                 </select>
-                <h2>Teachers</h2>
-                {this.makeUserList('teacher', this.state.teachers)}
-                <h2>Students</h2>
-                {this.makeUserList('student', this.state.students)}
+                <div id="student-teachers">
+                    <h2>Teachers</h2>
+                    {this.makeUserList('teacher', this.state.teachers)}
+                    <h2>Students</h2>
+                    {this.makeUserList('student', this.state.students)}
+                </div>
             </div>
         )
     }

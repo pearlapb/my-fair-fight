@@ -23,8 +23,20 @@ html, body, body>div {
     margin: 0px;
 }
 
+#main {
+    background-color: #ececec;
+}
+
 .main-component {
     min-height: 100vh;
+}
+
+input[type="checkbox"] {
+    cursor: pointer;
+}
+
+input:focus {
+    outline: none;
 }
 
 /*=======================================*/
@@ -42,6 +54,7 @@ a.white-oval {
 button.small {
     width: 50px;
     margin-top: 10px;
+    cursor: pointer;
 }
 
 button.white-oval {
@@ -50,6 +63,7 @@ button.white-oval {
     text-decoration: none;
     padding: 10px;
     border-radius: 30px;
+    cursor: pointer;
 }
 
 button.white {
@@ -96,11 +110,15 @@ a.blue-oval:hover {
 }
 
 .nav-bar {
-    height: 100px;
+    height: 70px;
     white-space: nowrap;
     padding: 5px;
     margin-bottom: 20px;
-    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);*/
+    /*min-width: 100vh;*/
+}
+
+.nav-bar.with-border {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .nav-bar > a > img {
@@ -250,6 +268,8 @@ div.side-by-side-elements {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 #profile-summary > #photo {
@@ -262,8 +282,7 @@ div.side-by-side-elements {
 #profile-summary > #photo > img {
     width: 250px;
     height: 250px;
-    border-radius: 50px;
-    /*border: 2px solid #2948ff;*/
+    border-radius: 200px;
 }
 
 #profile-summary > #photo > div {
@@ -294,7 +313,19 @@ div.side-by-side-elements {
 /*============= PROGRESS BARS =============*/
 /*=========================================*/
 
+.progress-bar-wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.progress-bar-wrapper > p {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 .progress-bar {
+    background-color: #FFFFFF;
     border: 1px solid #484848;
     width: 200px;
     height: 20px;
@@ -359,7 +390,7 @@ div.side-by-side-elements {
 
 #post-to-feed {
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: row wrap;
     justify-content: center;
     align-items: center;
     height: auto;
@@ -372,49 +403,73 @@ div.side-by-side-elements {
 }
 
 #post-to-feed > textarea {
-    width: 60%;
-    height: 50px;
+    padding: none;
     color: #2948ff;
     font-size: 15px;
-    border: 1px solid black;
+    border-radius: 30px;
+    height: 100px;
+    width: 300px;
+    border: none;
+    padding: 10px;
 }
 
 #post-to-feed > textarea::placeholder {
     text-align: center;
 }
 
-#post-to-feed > div {
+#post-to-feed > #file-selection {
+    background-color: white;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+    font-size: 15px;
+    border-radius: 30px;
+    height: 100px;
+    width: 300px;
+    border: none;
+    padding: 10px;
 }
 
-#post-to-feed > div > input, button {
+#post-to-feed > #file-selection > * {
     padding: 5px;
-    background-color: white;
-    font-size: 15px;
 }
+
+#post-to-feed > a {
+    line-height: 3;
+    background-color: #2948ff;
+    color: white;
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+
 
 
 /*=========================================*/
 /*============= TIMELINE FEED =============*/
 /*=========================================*/
 
-/*#achievement-feed ul {
-    display: flex;
-    flex-flow: column nowrap;
-    align-content: space-around;
-    justify-content: flex-start;
-}*/
+#achievement-feed ul {
+    padding: 0px;
+    padding-bottom: 20px;
+    border: 2px solid #2948ff;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    background-color: white;
+    border-radius: 30px;
+}
 
 #achievement-feed ul li {
     list-style-type: none;
     position: relative;
     width: 2px;
-    /*margin: 0 auto;*/
     left: 20%;
     padding-top: 50px;
+    padding-left: none;
     background: #2948ff;
 }
 
@@ -445,29 +500,30 @@ div.side-by-side-elements {
 #achievement-feed ul li div {
     position: relative;
     bottom: 0;
-    width: 40em;
+    width: 20em;
+    border-radius: 30px;
     padding: 15px;
     border: 1px solid #484848;
 }
 
-#achievement-feed ul li div::before {
+/*#achievement-feed ul li div::before {
     content: '';
     position: absolute;
     bottom: 7px;
     width: 0;
     height: 0;
     border-style: solid;
-}
+}*/
 
 #achievement-feed ul li:nth-child(odd) div {
     left: 45px;
 }
 
-#achievement-feed ul li:nth-child(odd) div::before {
+/*#achievement-feed ul li:nth-child(odd) div::before {
     left: -15px;
     border-width: 8px 16px 8px 0;
     border-color: transparent #484848 transparent transparent;
-}
+}*/
 
 #achievement-feed ul li:nth-child(even) div {
     left: 45px;
@@ -688,10 +744,14 @@ input.hidden {
 #admin-welcome-picture > img {
     width: 250px;
     height: 250px;
+    border-radius: 200px;
+}
+
+#admin-welcome-picture > h2 {
+    margin-bottom: 0px;
 }
 
 #home-page-links-wrapper {
-    margin-top: 30px;
     width: 100%;
     display: flex;
     flex-flow: row wrap;
@@ -699,7 +759,7 @@ input.hidden {
 }
 
 .home-page-links {
-    width: 300px;
+    width: 270px;
     height: 200px;
     color: white;
     font-size: 40px;
@@ -727,7 +787,64 @@ input.hidden {
 /*============== EDIT PROJECTS ============*/
 /*=========================================*/
 
+#edit-projects {
+    display: flex;
+    flex-flow: column nowrap;
+}
 
+.edit-projects-class {
+    background-color: #FFF;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 30px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#add-new-project > input {
+    color: #484848;
+    text-align: center;
+    font-size: 12px;
+    border: 1px solid #484848;
+    border-radius: 30px;
+    width: 200px;
+    height: 30px;
+    margin: 5px;
+}
+
+.edit-projects-class > a {
+    margin-top: 10px;
+    line-height: 2;
+    background-color: #2948ff;
+    color: white;
+    border-radius: 10px;
+    width: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.edit-projects-class > a:hover {
+    background-color: #435eff;
+}
+
+.edit-projects-class > ul > li > a {
+    cursor: pointer;
+    margin-top: 10px;
+    line-height: 2;
+    background-color: #E84B30;
+    color: white;
+    border-radius: 10px;
+    width: 50px;
+    padding: 3px;
+    text-align: center;
+}
+
+.edit-projects-class > ul > li > a:hover {
+    background-color: #eb5f47;
+
+}
 /*=========================================*/
 /*=============== MANAGE USERS ============*/
 /*=========================================*/
@@ -749,15 +866,22 @@ input.hidden {
     margin: 20px 10px 0px 10px;
 }
 
+#manage-users > #student-teachers {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+}
+
 .user-type-list {
     background-color: white;
-    width: 80%;
+    padding: 20px;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
     margin: 20px;
-    border: 1px solid #B243FF;
+    border-radius: 30px;
 }
+
 
 .user-wrapper {
     display: flex;

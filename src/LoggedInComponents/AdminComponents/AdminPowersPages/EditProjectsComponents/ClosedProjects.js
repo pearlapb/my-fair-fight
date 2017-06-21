@@ -24,8 +24,8 @@ class ClosedProjects extends Component {
 
     render() {
         return (
-            <div>
-                <h3>Closed Projects</h3>
+            <div className="edit-projects-class">
+                <h2>Closed Projects</h2>
                 <ul>
                     {this.listOngoingProjects()}
                 </ul>
