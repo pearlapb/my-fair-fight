@@ -15,6 +15,7 @@ class ProfilePage extends Component {
     render() {
         return (
             <div id="profile-wrapper" className={this.props.profileColor}>
+                <img id="edit" src="/public/assets/edit.png" onClick={this.props.setNewProfileBackground}/>
                 <h2>My Profile</h2>
                 <div id="profile-picture-wrap">
                     <img src={this.props.profilePicUrl}/>

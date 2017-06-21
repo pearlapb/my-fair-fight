@@ -137,6 +137,21 @@ const saveSimplePostToDb = (requestedId, message) => {
     });
 };
 
+const editProfileBackgroundColor = (newBackground, profileId) => {
+    return new Promise((resolve, reject) => {
+        const q = `UPDATE users
+                    SET profile_color = $1
+                    WHERE id = $2
+                    RETURNING profile_color;`;
+        const params = [newBackground, profileId];
+        db.query(q, params).then((res) => {
+            resolve(res);
+        }).catch((err) => {
+            reject(err);
+        });
+    });
+};
+
 module.exports.getUserProfileInfo = getUserProfileInfo;
 module.exports.saveImageUrlToDb = saveImageUrlToDb;
 module.exports.getAllAchievements = getAllAchievements;
@@ -147,3 +162,4 @@ module.exports.giveAchievementToStudents = giveAchievementToStudents;
 module.exports.insertOneAchievement = insertOneAchievement;
 module.exports.savePostWithImageToDb = savePostWithImageToDb;
 module.exports.saveSimplePostToDb = saveSimplePostToDb;
+module.exports.editProfileBackgroundColor = editProfileBackgroundColor;

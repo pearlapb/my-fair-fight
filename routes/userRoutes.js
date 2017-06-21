@@ -96,4 +96,17 @@ router.route('/getAllStudentFeed')
         });
     });
 
+
+router.route('/editProfileBackgroundColor')
+
+    .post( (req, res) => {
+        db.editProfileBackgroundColor(req.body.newColor, req.session.user.userId).then((result) => {
+            res.json({ color: result.rows[0].profile_color });
+        }).catch((err) => {
+            console.log(err);
+            res.json({ error: true });
+        });
+    });
+
+
 module.exports = router;

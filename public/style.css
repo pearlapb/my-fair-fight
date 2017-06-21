@@ -497,6 +497,14 @@ div.side-by-side-elements {
     color: white;
 }
 
+#edit {
+    float: right;
+    width: 25px;
+    align-self: flex-end;
+    margin: 15px 15px 0px 0px;
+    cursor: pointer;
+}
+
 #student-diary {
     margin: 20px;
     width: 80%;
