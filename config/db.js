@@ -33,10 +33,11 @@ const addNewUserToDb = (newUserInfo) => {
         let q = '', params = [];
         // IF NEW USER IS A STUDENT
         if (newUserInfo.userType == 'student') {
-            q = `INSERT INTO users (user_type, first_name, last_name, user_name, hashed_pw, age, country, city, school, profile_color, profile_pic_url)
-                        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+            q = `INSERT INTO users (account_status, user_type, first_name, last_name, user_name, hashed_pw, age, country, city, school, profile_color, profile_pic_url)
+                        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
                         RETURNING *;`;
             params = [
+                'active',
                 newUserInfo.userType,
                 newUserInfo.firstName,
                 newUserInfo.lastName,
@@ -51,10 +52,11 @@ const addNewUserToDb = (newUserInfo) => {
             ];
         // IF NEW USER IS A TEACHER (add coutry later on!)
         } else if (newUserInfo.userType == 'teacher') {
-            q = `INSERT INTO users (user_type, first_name, last_name, user_name, hashed_pw, country, profile_pic_url, profile_color)
-                        VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+            q = `INSERT INTO users (account_status, user_type, first_name, last_name, user_name, hashed_pw, country, profile_pic_url, profile_color)
+                        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
                         RETURNING *;`;
             params = [
+                'active',
                 newUserInfo.userType,
                 newUserInfo.firstName,
                 newUserInfo.lastName,
@@ -66,10 +68,11 @@ const addNewUserToDb = (newUserInfo) => {
             ];
         // IF NEW USER IS A FF MEMBER
         } else if (newUserInfo.userType == 'FFmember') {
-            q = `INSERT INTO users (user_type, first_name, last_name, user_name, hashed_pw, profile_pic_url, profile_color)
-                        VALUES ($1, $2, $3, $4, $5, $6, $7)
+            q = `INSERT INTO users (account_status, user_type, first_name, last_name, user_name, hashed_pw, profile_pic_url, profile_color)
+                        VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
                         RETURNING *;`;
             params = [
+                'active',
                 newUserInfo.userType,
                 newUserInfo.firstName,
                 newUserInfo.lastName,

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory} from 'react-router';
 import axios from 'axios';
 
-class UserProfiles extends Component {
+class AdminActivity extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -11,10 +11,10 @@ class UserProfiles extends Component {
     render() {
         return (
             <div>
-                UserProfiles
+                Admin Activity
             </div>
         )
     }
 }
 
-export default UserProfiles;
+export default AdminActivity;

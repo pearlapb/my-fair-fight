@@ -12,6 +12,39 @@ router.route('/getAllProjects')
         });
     });
 
+router.route('/getAllUsers')
+
+    .get( (req, res) => {
+        db.getAllUsers().then((result) => {
+            res.json({ result: result.rows });
+        }).catch((err) => {
+            console.log(err);
+            res.json({ error: true });
+        });
+    });
+
+router.route('/disactivateUser')
+
+    .post( (req, res) => {
+        db.disactivateUser(req.body.idToDisactivate).then((result) => {
+            res.json({ result: result.rows });
+        }).catch((err) => {
+            console.log(err);
+            res.json({ error: true });
+        });
+    });
+
+router.route('/deleteUserFromDb')
+
+    .post( (req, res) => {
+        db.deleteUserFromDb(req.body.idToDelete).then((result) => {
+            res.json({ result: result.rows });
+        }).catch((err) => {
+            console.log(err);
+            res.json({ error: true });
+        });
+    });
+
 router.route('/saveNewProject')
 
     .post( (req, res) => {

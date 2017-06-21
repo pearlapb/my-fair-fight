@@ -136,11 +136,16 @@ a.blue-oval:hover {
 #large-popup-menu > ul > li > a {
     color: white;
     text-decoration: none;
+    cursor: pointer;
 }
 
-#large-popup-menu > ul > li:hover {
-    cursor: pointer;
+.logout:hover {
+    color: #E84B30;
+    cursor: pointer
+}
 
+#large-popup-menu > ul > li > a:hover {
+    color: #49E83E;
 }
 
 /*====================================================*/
@@ -628,6 +633,77 @@ input.hidden {
 .home-page-links.green {
     background-color: #49E83E;
 }
+
+/*=========================================*/
+/*============== EDIT PROJECTS ============*/
+/*=========================================*/
+
+
+/*=========================================*/
+/*=============== MANAGE USERS ============*/
+/*=========================================*/
+
+#manage-users {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 30px;
+}
+
+#manage-users h2 {
+    margin: 20px 10px 0px 10px;
+}
+
+.user-type-list {
+    background-color: white;
+    width: 80%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    margin: 20px;
+    border: 1px solid #B243FF;
+}
+
+.user-wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #ececec;
+    margin: 20px;
+    width: 300px;
+}
+
+.user-wrapper > h3 {
+    margin-bottom: 0px;
+}
+
+.delete-user {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.user-info {
+    margin: 10px;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.user-info > ul li {
+    list-style-type: none;
+}
+
+.user-pic {
+    width: 100px;
+    height: 100px;
+}
+
 
 
 /*=========================================*/

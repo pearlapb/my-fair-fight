@@ -111,7 +111,7 @@ class Registration extends Component {
 
                 <UserTypeChecks handleCheckChange={this.handleCheckChange}/>
 
-                {this.state.isTeacher && <CountryOptions handleInput={this.handleInput}/> }
+                {this.state.isTeacher && <CountryOptions countries={this.state.countries} makeProjectSelections={this.makeProjectSelections} handleInput={this.handleInput}/> }
 
                 {this.state.isStudent &&
                     <div id="student-selections">

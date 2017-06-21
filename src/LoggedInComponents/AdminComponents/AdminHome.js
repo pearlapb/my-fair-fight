@@ -7,7 +7,7 @@ import HomePageChoices from './HomePageComponents/HomePageChoices.js';
 import EditProjects from './AdminPowersPages/EditProjects.js';
 import ManageUsers from './AdminPowersPages/ManageUsers.js';
 import ProjectStats from './AdminPowersPages/ProjectStats.js';
-import UserProfiles from './AdminPowersPages/UserProfiles.js';
+import AdminActivity from './AdminPowersPages/AdminActivity.js';
 
 class AdminHome extends Component {
     constructor(props) {

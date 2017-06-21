@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     user_type VARCHAR NOT NULL,
+    account_status VARCHAR NOT NULL,
     first_name VARCHAR NOT NULL,
     last_name VARCHAR NOT NULL,
     user_name VARCHAR NOT NULL,
