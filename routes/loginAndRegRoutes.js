@@ -6,19 +6,17 @@ router.route('/getAllOngoingProjectsForReg')
 
     .get( (req, res) => {
         db.getAllOngoingProjectsForReg().then((result) => {
-            let countries = [], cities = [], schools = [];
-            result.rows.map((project) => {
-                if (countries.indexOf(project.country) < 0) {
-                    countries.push(project.country);
-                }
-                if (cities.indexOf(project.city) < 0) {
-                    cities.push(project.city);
-                }
-                if (schools.indexOf(project.school) < 0) {
-                    schools.push(project.school);
+            var countries = {};
+            result.rows.forEach((project) => {
+                var country = countries[project.country] = countries[project.country] || {};
+                var city = country[project.city] = country[project.city] || {};
+                var schools = city.schools = city.schools || [];
+                if (!city.schools.includes(project.school)) {
+                    city.schools.push(project.school);
                 }
             });
-            res.json({ countries, cities, schools });
+            console.log(JSON.stringify(countries, null, 4));
+            res.json({ countries: countries });
         }).catch((err) => {
             console.log(err);
             res.json({ error: true });

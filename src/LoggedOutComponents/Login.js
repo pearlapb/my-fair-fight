@@ -43,10 +43,10 @@ class Login extends Component {
         return (
             <form id="login-form" className="reg-login-forms" onSubmit={this.handleLoginSubmit}>
                 {this.state.error && <div className="error"> {this.state.error}</div>}
-                <p id="login-form-intro">Log in</p>
+                <h2 id="login-form-intro">Log in</h2>
                 <input onChange={this.handleInput} name="userName" className="blue-background-style" placeholder="username"/>
                 <input onChange={this.handleInput} type="password" name="pw" className="blue-background-style" placeholder="password"/>
-                <button type="submit" className="white-oval">GO</button>
+                <button type="submit" className="white-oval small ">GO</button>
             </form>
         )
     }

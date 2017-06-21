@@ -10,9 +10,7 @@ class StudentSummaries extends Component {
 
     render() {
         return (
-            <div>
-                <p>Student Summaries</p>
-            </div>
+            <div> </div>
         )
     }
 }

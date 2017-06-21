@@ -8,14 +8,28 @@ class CountryOptions extends Component {
         this.state = {};
     }
 
+    getCountriesField() {
+        let countries = [];
+        for (var key in this.props.projectsMap) {
+            countries.push(key);
+        }
+        let countryOptions = countries.map((country) => {
+            return ( <option key={country} value={country}>{country}</option> )
+        });
+        return (
+            <select name="country" onChange={this.props.handleInput} className="blue-background-style">
+                <option value=""></option>
+                {countryOptions}
+            </select>
+        )
+    }
+
     render() {
 
         return (
-            <div>
+            <div className="selection-wrapper">
                 <label for="country">Country</label>
-                <select name="country" onChange={this.props.handleInput} className="blue-background-style">
-                    {this.props.makeProjectSelections('countries', this.props.countries)}
-                </select>
+                {this.getCountriesField()}
             </div>
         )
     }

@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router';
-import AgeOptions from './RegComponents/AgeOptions.js';
+
 import UserTypeChecks from './RegComponents/UserTypeChecks.js';
+
 import CountryOptions from './RegComponents/CountryOptions.js';
-import CityOptions from './RegComponents/CityOptions.js';
-import SchoolOptions from './RegComponents/SchoolOptions.js';
+import StudentOptions from './RegComponents/StudentOptions.js';
 
 class Registration extends Component {
     constructor(props) {
@@ -14,19 +14,19 @@ class Registration extends Component {
         this.handleInput = this.handleInput.bind(this);
         this.handleRegistrationSubmit = this.handleRegistrationSubmit.bind(this);
         this.handleCheckChange = this.handleCheckChange.bind(this);
-        this.makeProjectSelections = this.makeProjectSelections.bind(this);
     }
 
     componentWillMount() {
         if (!this.state.countries && !this.state.cities && !this.state.school) {
             axios.get('/getAllOngoingProjectsForReg').then((result) => {
-                const {countries, cities, schools} = result.data;
-                this.setState({countries, cities, schools})
+                console.log(result.data.countries);
+                this.setState({ projectsMap: result.data.countries })
             })
         }
     }
 
     handleInput(e) {
+        console.log(e.target.name, e.target.value);
         this.setState({ [e.target.name]: e.target.value });
     };
 
@@ -84,25 +84,13 @@ class Registration extends Component {
         })
     }
 
-    makeProjectSelections(selectionType, selectionArray) {
-        selectionType = '';
-        if (!selectionArray) {
-            return null;
-        } else {
-            selectionType = selectionArray.map((item) => {
-                return ( <option value={item}>{item}</option> )
-            })
-            return selectionType;
-        }
-    }
-
     render() {
         return (
             <form onSubmit={this.handleRegistrationSubmit.bind(this)} className="reg-login-forms">
 
                 {this.state.error && <div className="error"> {this.state.error}</div>}
 
-                <p id="registration-form-intro">Register</p>
+                <h2 id="registration-form-intro">Register</h2>
 
                 <input onChange={this.handleInput} name="firstName" className="blue-background-style" placeholder="first name"/>
                 <input onChange={this.handleInput} name="lastName" className="blue-background-style" placeholder="last name"/>
@@ -111,18 +99,10 @@ class Registration extends Component {
 
                 <UserTypeChecks handleCheckChange={this.handleCheckChange}/>
 
-                {this.state.isTeacher && <CountryOptions countries={this.state.countries} makeProjectSelections={this.makeProjectSelections} handleInput={this.handleInput}/> }
+                {this.state.isTeacher && <CountryOptions country={this.state.country} projectsMap={this.state.projectsMap} handleInput={this.handleInput}/> }
+                {this.state.isStudent && <StudentOptions country={this.state.country} city={this.state.city} school={this.state.school} projectsMap={this.state.projectsMap} handleInput={this.handleInput}/>}
 
-                {this.state.isStudent &&
-                    <div id="student-selections">
-                        <AgeOptions handleInput={this.handleInput}/>
-                        <CountryOptions countries={this.state.countries} makeProjectSelections={this.makeProjectSelections} handleInput={this.handleInput}/>
-                        <CityOptions cities={this.state.cities} makeProjectSelections={this.makeProjectSelections} handleInput={this.handleInput}/>
-                        <SchoolOptions schools={this.state.schools} makeProjectSelections={this.makeProjectSelections} handleInput={this.handleInput}/>
-                    </div>
-                }
-
-                <button className="white-oval">GO</button>
+                <button className="white-oval small">GO</button>
 
             </form>
         )

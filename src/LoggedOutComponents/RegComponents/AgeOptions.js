@@ -20,9 +20,10 @@ class AgeOptions extends Component {
 
     render() {
         return (
-            <div>
+            <div className="selection-wrapper">
                 <label for="age">Age</label>
                 <select name="age" onChange={this.props.handleInput} className="blue-background-style">
+                    <option value=""></option>
                     {this.makeAgeOptions(5, 90)}
                 </select>
             </div>

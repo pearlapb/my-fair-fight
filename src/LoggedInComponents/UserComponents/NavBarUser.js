@@ -28,7 +28,7 @@ class NavBarUser extends Component {
                 {this.state.showLargePopupMenu && <div id="large-popup-menu" className="new-blue">
                     <img id="nav-bar-cross" src="/public/assets/cross/cross-white.svg" onClick={this.showLargePopupMenu}/>
                     <ul>
-                        <li onClick={this.handleLogout}>Logout</li>
+                        <li className="logout" onClick={this.handleLogout}>Logout</li>
                         <li><Link onClick={this.showLargePopupMenu} to="/">Home</Link></li>
                         <li><Link onClick={this.showLargePopupMenu} to="profile">My Profile</Link></li>
                     </ul>
