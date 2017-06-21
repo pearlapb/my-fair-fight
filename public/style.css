@@ -23,6 +23,10 @@ html, body, body>div {
     margin: 0px;
 }
 
+.main-component {
+    min-height: 100vh;
+}
+
 /*=======================================*/
 /*=============== BUTTONS ===============*/
 /*=======================================*/
@@ -123,11 +127,11 @@ a.blue-oval:hover {
     bottom: +1px;
     position: absolute;
     width: 100%;
-    height: 100%;
     color: white;
     font-size: 30px;
     transition: 2s;
     z-index: 10000000000000;
+    min-height: 100vh;
 }
 
 #large-popup-menu > ul {
@@ -489,28 +493,43 @@ div.side-by-side-elements {
     text-align: center;
 }
 
+#achievement-choice {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.achievement-selector {
+    color: #484848;
+    text-align: center;
+    font-size: 12px;
+    border: 1px solid #484848;
+    border-radius: 10px;
+    width: 200px;
+    height: 30px;
+    margin: 5px;
+}
+
 #student-list {
     margin: 10px;
     width: 80%;
     height: auto;
     display: flex;
-    flex-flow: column nowrap;
-
+    flex-flow: row wrap;
+    justify-content: center;
 }
 
 .student-summary {
-    height: 100px;
-    width: 100%;
+    height: 200px;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column nowrap;
     align-content: center;
     align-items: center;
     margin: 10px;
 }
 
 .student-summary > img {
-    height: 100px;
-    width: 100px;
+    height: 150px;
+    width: 150px;
     margin: 5px;
 }
 
@@ -549,12 +568,10 @@ input[type='checkbox']:checked.chosen-student + label {
     -webkit-transition: all 1s;
     z-index: 1000;
     position: absolute;
-    width: 100%;
-    height: 100%;
+    min-width: 100vw;
+    min-height: 100vh;
     display: inline-block;
     top: -10px;
-    left: -10px;
-    right: +10px;
     bottom: +10px;
 }
 
@@ -831,7 +848,6 @@ input.hidden {
 }
 
 .new-blue {
-    min-height: 100vh;
     background: #396afc;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #2948ff, #396afc);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #2948ff, #396afc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */

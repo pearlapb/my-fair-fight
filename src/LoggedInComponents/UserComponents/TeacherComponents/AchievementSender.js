@@ -67,9 +67,11 @@ class AchievementSender extends Component {
             return (this.state.students.map((student) => {
                 return (
                     <div className="student-summary">
-                        <input type="checkbox" id={student.id} name={student.id} value={student.id} className="chosen-student" onChange={this.handleStudentChoice}/>
                         <img src={student.profile_pic_url}/>
-                        <label for='{sudent.id}'>{student.first_name}</label>
+                        <div>
+                            <input type="checkbox" id={student.id} name={student.id} value={student.id} className="chosen-student" onChange={this.handleStudentChoice}/>
+                            <label for='{sudent.id}'>{student.first_name}</label>
+                        </div>
                     </div>
                 )
             }))
@@ -81,7 +83,8 @@ class AchievementSender extends Component {
             return null;
         }
         return (
-            <select name="achievement-name" ref={(achievementName) => { this.achievementName = achievementName }} onChange={this.handleAchievementChoice}>
+            <select className="achievement-selector" name="achievement-name" ref={(achievementName) => { this.achievementName = achievementName }} onChange={this.handleAchievementChoice}>
+                <option value=""></option>
                 {this.getAchievementNameOptions(this.state.achievementType)}
             </select>
         )
@@ -125,7 +128,6 @@ class AchievementSender extends Component {
         const { selectedStudents, achievementType, achievementName } = this.state;
         let sendingInfo = { selectedStudents, achievementType, achievementName }
         axios.post('/giveAchievementToStudents', sendingInfo).then((res) => {
-            console.log(res);
             this.handleSentMessage();
         })
     }
@@ -139,22 +141,28 @@ class AchievementSender extends Component {
         return (
             <div id="student-feed">
                 <h2>Send achievements to your students: </h2>
+
                 {this.state.showSentMessage && <div id="sent-achievement-message"><button onClick={this.handleSentMessage}>X</button><p>Sent!</p></div>}
                 {this.state.showSentMessage && <div onClick={this.handleSentMessage} className="overlay"></div>}
+
                 <div id="achievement-choice">
-                    <label for="achievement-type"></label>
-                    <select name="achievement-type" ref={(achievementType) => { this.achievementType = achievementType }} onChange={this.handleAchievementChoice}>
+
+                    <label for="achievement-type">Achievement Type:</label>
+                    <select className="achievement-selector" name="achievement-type" ref={(achievementType) => { this.achievementType = achievementType }} onChange={this.handleAchievementChoice}>
                         <option value="behaviour">Behaviour</option>
-                        <option value="attendence">attendence</option>
+                        <option value="attendence">Attendence</option>
                         <option value="belt">Belt</option>
                         <option value="kata">Kata</option>
                     </select>
-                    <label for="achievement-name"></label>
+
+                    <label for="achievement-name">Achievement:</label>
                     {this.getAchievementNameField()}
                 </div>
+
                 <div id="student-list">
                     {this.getStudentList()}
                 </div>
+
                 <button onClick={this.sendAchievements}>Send achievements!</button>
             </div>
         )
