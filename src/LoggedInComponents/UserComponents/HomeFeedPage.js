@@ -57,6 +57,7 @@ class HomeFeedPage extends Component {
                     </div>
                     {this.props.isStudent && <ProgressBars achievementList={this.state.achievementList}/>}
                 </div>
+                {this.props.isStudent && <h1 className="page-heading ribbon">Your Timeline:</h1>}
                 {this.props.isStudent && <Timeline feedContent={this.state.feedContent} refreshFeed={this.refreshFeed}/>}
                 {this.props.isTeacher && <AchievementSender />}
             </div>

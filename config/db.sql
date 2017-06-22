@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS admin_activity;
 DROP TABLE IF EXISTS projects;
 DROP TABLE IF EXISTS student_feed;
 DROP TABLE IF EXISTS achievements;
