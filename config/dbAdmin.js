@@ -55,7 +55,7 @@ const saveNewProject = (projectInfo) => {
     return new Promise(function(resolve, reject) {
         let q = `INSERT INTO projects (country, city, school, teacher, status)
                     VALUES  ($1, $2, $3, $4, $5);`;
-        let params = [projectInfo.country, projectInfo.city, projectInfo.school, projectInfo.teacher, 'ongoing'];
+        let params = [projectInfo.country.toLowerCase(), projectInfo.city.toLowerCase(), projectInfo.school.toLowerCase(), projectInfo.teacher.toLowerCase(), 'ongoing'];
         db.query(q, params).then((result) => {
             resolve(result);
         }).catch((err) => {

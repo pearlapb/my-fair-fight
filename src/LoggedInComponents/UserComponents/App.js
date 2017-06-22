@@ -45,7 +45,7 @@ class AdminApp extends Component {
             'playing-reds',
             'nimvelo',
             'purple-love',
-            'new-blue',
+            'old-blue',
             'holy',
         ];
         const getRandomNumber = (min, max) => {

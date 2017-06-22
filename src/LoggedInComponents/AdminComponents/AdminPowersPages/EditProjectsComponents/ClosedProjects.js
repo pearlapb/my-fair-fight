@@ -15,7 +15,15 @@ class ClosedProjects extends Component {
                 return (<p>No closed projects</p>)
             }
             projects = this.props.closedProjects.map((project) => {
-                return (<li>Country: {project.country}, City: {project.city}, School: {project.school}, Teacher: {project.teacher}</li>)
+                return (
+                    <tr>
+                        <th></th>
+                        <th>{project.country}</th>
+                        <th>{project.city}</th>
+                        <th>{project.school}</th>
+                        <th>{project.teacher}</th>
+                    </tr>
+                )
             })
             return projects;
         }
@@ -26,9 +34,16 @@ class ClosedProjects extends Component {
         return (
             <div className="edit-projects-class">
                 <h2>Closed Projects</h2>
-                <ul>
+                <table id="closed-projects-table" className="projects-table">
+                    <tr className="first closed">
+                        <th className="button-column"></th>
+                        <th className="column-header" >Country</th>
+                        <th className="column-header" >City</th>
+                        <th className="column-header" >School</th>
+                        <th className="column-header" >Teacher</th>
+                    </tr>
                     {this.listOngoingProjects()}
-                </ul>
+                </table>
             </div>
         )
     }
