@@ -10,7 +10,7 @@ class StudentOptions extends Component {
         super(props);
         this.state = {};
     }
-    
+
     getCitiesField() {
         if (!this.props.country) {
             return null;
@@ -29,7 +29,7 @@ class StudentOptions extends Component {
         } else {
             var cities = Object.keys(this.props.projectsMap[country]);
             return cities.map((city) => {
-                return <option value={city}>{city}</option>
+                return <option value={city} className="capitalize">{city}</option>
             })
         }
     }
@@ -55,7 +55,7 @@ class StudentOptions extends Component {
         } else {
             var cities = country[city];
             return cities.schools.map((city) => {
-                return <option value={city}>{city}</option>
+                return <option value={city} className="capitalize">{city}</option>
             })
         }
     }

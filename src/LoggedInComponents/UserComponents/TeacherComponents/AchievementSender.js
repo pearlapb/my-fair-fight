@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory} from 'react-router';
 import axios from 'axios';
+import Modal from 'react-modal';
 
 class AchievementSender extends Component {
     constructor(props) {
@@ -138,35 +139,82 @@ class AchievementSender extends Component {
 
     render() {
 
+        let customStyle = {
+            overlay : {
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                backgroundColor: 'rgba(255, 255, 255, 0.75)'
+            },
+            content : {
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                border: '1px solid #ccc',
+                background: '#fff',
+                overflow: 'auto',
+                WebkitOverflowScrolling: 'touch',
+                borderRadius: '4px',
+                outline: 'none',
+                padding: '0px',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+            }
+        }
+
         return (
             <div id="student-feed">
                 <h2>Send achievements to your students: </h2>
 
-                {this.state.showSentMessage && <div id="sent-achievement-message"><button onClick={this.handleSentMessage}>X</button><p>Sent!</p></div>}
-                {this.state.showSentMessage && <div onClick={this.handleSentMessage} className="overlay"></div>}
+                {this.state.showSentMessage &&
+                    <Modal
+                        isOpen='true'
+                        contentLabel="achievement-sent"
+                        style={customStyle}
+                    >
+                        <div id="achievement-modal">
+                            <h1>Achievement sent!</h1>
+                            <a onClick={this.handleSentMessage}>Cool!</a>
+                        </div>
+                    </Modal>
+                }
 
                 <div id="achievement-choice">
 
-                    <label for="achievement-type">Achievement Type:</label>
-                    <select className="achievement-selector" name="achievement-type" ref={(achievementType) => { this.achievementType = achievementType }} onChange={this.handleAchievementChoice}>
-                        <option value="behaviour">Behaviour</option>
-                        <option value="attendence">Attendence</option>
-                        <option value="belt">Belt</option>
-                        <option value="kata">Kata</option>
-                    </select>
+                    <div>
+                        <label for="achievement-type">Achievement Type:</label>
+                        <select className="achievement-selector" name="achievement-type" ref={(achievementType) => { this.achievementType = achievementType }} onChange={this.handleAchievementChoice}>
+                            <option value="behaviour">Behaviour</option>
+                            <option value="attendence">Attendence</option>
+                            <option value="belt">Belt</option>
+                            <option value="kata">Kata</option>
+                        </select>
+                    </div>
 
+                    <div>
                     <label for="achievement-name">Achievement:</label>
                     {this.getAchievementNameField()}
+                    </div>
+
                 </div>
 
                 <div id="student-list">
                     {this.getStudentList()}
                 </div>
 
-                <button onClick={this.sendAchievements}>Send achievements!</button>
+                <a onClick={this.sendAchievements}>Send achievements!</a>
             </div>
         )
     }
 }
 
 export default AchievementSender;
+
+/*
+{this.state.showSentMessage && <div id="sent-achievement-message"><button onClick={this.handleSentMessage}>X</button><p>Sent!</p></div>}
+{this.state.showSentMessage && <div onClick={this.handleSentMessage} className="overlay"></div>}
+*/

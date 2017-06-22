@@ -23,10 +23,23 @@ router.route('/getAllUsers')
         });
     });
 
+
+router.route('/getMyAdminActivity')
+
+    .get( (req, res) => {
+        db.getMyAdminActivity(req.session.user.userId).then((result) => {
+            console.log(result);
+            res.json({ result: result })
+        }).catch((err) => {
+            console.log(err);
+            res.json({ error: true })
+        })
+    })
+
 router.route('/disactivateUser')
 
     .post( (req, res) => {
-        db.disactivateUser(req.body.idToDisactivate).then((result) => {
+        db.disactivateUser(req.body.idToDisactivate, req.session.user.userId).then((result) => {
             res.json({ result: result.rows });
         }).catch((err) => {
             console.log(err);
@@ -37,7 +50,7 @@ router.route('/disactivateUser')
 router.route('/deleteUserFromDb')
 
     .post( (req, res) => {
-        db.deleteUserFromDb(req.body.idToDelete).then((result) => {
+        db.deleteUserFromDb(req.body.idToDelete, req.session.user.userId).then((result) => {
             res.json({ result: result.rows });
         }).catch((err) => {
             console.log(err);
@@ -48,7 +61,7 @@ router.route('/deleteUserFromDb')
 router.route('/saveNewProject')
 
     .post( (req, res) => {
-        db.saveNewProject(req.body).then((result) => {
+        db.saveNewProject(req.body, req.session.user.userId).then((result) => {
             res.json({ result: result.rows });
         }).catch((err) => {
             console.log(err);
@@ -59,7 +72,7 @@ router.route('/saveNewProject')
 router.route('/closeOngoingProject')
 
     .post( (req, res) => {
-        db.closeOngoingProject(Number(req.body.projectId)).then((result) => {
+        db.closeOngoingProject(Number(req.body.projectId), req.session.user.userId).then((result) => {
             res.json({ result: result.rows });
         }).catch((err) => {
             console.log(err);

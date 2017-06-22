@@ -11,7 +11,7 @@ class AdminActivity extends Component {
     render() {
         return (
             <div>
-                Admin Activity
+                Hi
             </div>
         )
     }

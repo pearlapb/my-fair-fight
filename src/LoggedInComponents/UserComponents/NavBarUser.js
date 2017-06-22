@@ -30,10 +30,10 @@ class NavBarUser extends Component {
                     <ul>
                         <li><Link onClick={this.showLargePopupMenu} to="/">Home</Link></li>
                         <li><Link onClick={this.showLargePopupMenu} to="profile">My Profile</Link></li>
-                        <li className="logout" onClick={this.handleLogout}>LOGOUT</li>
+                        <li className="logout" onClick={this.handleLogout}>Logout <img src="/public/assets/exit.svg"/></li>
                     </ul>
                 </div>}
-                <img id="nav-bar-cross" src="/public/assets/cross/cross-blue.svg" onClick={this.showLargePopupMenu}/>
+                <img id="nav-bar-cross" src="/public/assets/cross/hamburgermenu.svg" onClick={this.showLargePopupMenu}/>
             </div>
         )
     }

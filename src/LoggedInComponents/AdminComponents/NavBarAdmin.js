@@ -34,10 +34,10 @@ class NavBarAdmin extends Component {
                         <li><Link onClick={this.showLargePopupMenu} to="/admin/manage-users">Manage App Users</Link></li>
                         <li><Link onClick={this.showLargePopupMenu} to="/admin/stats">See Project Stats</Link></li>
                         <li><Link onClick={this.showLargePopupMenu} to="/admin/admin-activity">See Admin Activity</Link></li>
-                        <li className="logout" onClick={this.handleLogout}>LOGOUT</li>
+                        <li className="logout" onClick={this.handleLogout}>Logout<img src="/public/assets/exit.svg"/></li>
                     </ul>
                 </div>}
-                <img id="nav-bar-cross" src="/public/assets/cross/cross-blue.svg" onClick={this.showLargePopupMenu}/>
+                <img id="nav-bar-cross" src="/public/assets/cross/hamburgermenu.svg" onClick={this.showLargePopupMenu}/>
             </div>
         )
     }

@@ -31,8 +31,8 @@ class AddNewProject extends Component {
                     <input onChange={this.handleChange} name="city" placeholder="City"></input>
                     <input onChange={this.handleChange} name="school" placeholder="School"></input>
                     <input onChange={this.handleChange} name="teacher" placeholder="Teacher"></input>
+                    <Link onClick={this.saveNewProject}>Save</Link>
                 </div>
-                <Link onClick={this.saveNewProject}>Save</Link>
             </div>
         )
     }

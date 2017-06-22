@@ -17,11 +17,11 @@ class ClosedProjects extends Component {
             projects = this.props.closedProjects.map((project) => {
                 return (
                     <tr>
-                        <th></th>
-                        <th>{project.country}</th>
-                        <th>{project.city}</th>
-                        <th>{project.school}</th>
-                        <th>{project.teacher}</th>
+                        <td className="capitalize">{project.country}</td>
+                        <td className="capitalize">{project.city}</td>
+                        <td className="capitalize">{project.school}</td>
+                        <td className="capitalize">{project.teacher}</td>
+                        <td></td>
                     </tr>
                 )
             })
@@ -36,11 +36,11 @@ class ClosedProjects extends Component {
                 <h2>Closed Projects</h2>
                 <table id="closed-projects-table" className="projects-table">
                     <tr className="first closed">
+                        <th className="column-header" >COUNTRY</th>
+                        <th className="column-header" >CITY</th>
+                        <th className="column-header" >SCHOOL</th>
+                        <th className="column-header" >TEACHER</th>
                         <th className="button-column"></th>
-                        <th className="column-header" >Country</th>
-                        <th className="column-header" >City</th>
-                        <th className="column-header" >School</th>
-                        <th className="column-header" >Teacher</th>
                     </tr>
                     {this.listOngoingProjects()}
                 </table>

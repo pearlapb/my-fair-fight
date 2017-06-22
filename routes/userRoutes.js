@@ -66,6 +66,9 @@ router.route('/getAllAchievements')
 
     .get( (req, res) => {
         db.getAllAchievements(req.session.user.userId).then((result) => {
+            result.rows.forEach((ach) => {
+                ach.created_at = new Date(+ach.created_at).toLocaleString();
+            })
             res.json({ result: result.rows });
         }).catch((err) => {
             console.log(err);
@@ -88,6 +91,9 @@ router.route('/getAllStudentFeed')
 
     .get( (req, res) => {
         db.getAllStudentFeed(req.session.user.userId).then((result) => {
+            result.rows.forEach((post) => {
+                post.created_at = new Date(+post.created_at).toLocaleString();
+            })
             console.log(result.rows);
             res.json({ result: result.rows });
         }).catch((err) => {

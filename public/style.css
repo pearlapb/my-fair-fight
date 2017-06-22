@@ -23,7 +23,25 @@ body {
     min-height: 100vh;
 }
 
+.capitalize {
+    text-transform: capitalize;
+}
+
+.page-heading {
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+    color: #FFF;
+    text-align: center;
+    background-color: #2CA8E4;
+    padding: 5px;
+}
+
 .error {
+    color: #E84B30;
+}
+
+.red-text {
     color: #E84B30;
 }
 
@@ -145,7 +163,7 @@ a.blue-oval:hover {
     font-size: 30px;
     transition: 2s;
     z-index: 10000000000000;
-    min-height: 100vh;
+    min-height: 120vh;
 }
 
 #large-popup-menu > ul {
@@ -168,9 +186,16 @@ a.blue-oval:hover {
 }
 
 .logout:hover {
-    color: #E84B30;
+    cursor: pointer;
+    color: #ffff4d;
+}
+
+.logout > img {
+    height: 25px;
+    width: auto;
     cursor: pointer
 }
+
 
 #large-popup-menu > ul > li > a:hover {
     color: #49E83E;
@@ -337,6 +362,10 @@ div.side-by-side-elements {
     width: 40px;
 }
 
+.first-progress-point:hover {
+    opacity: 0.8;
+}
+
 .last-progress-point {
     border-radius: 0px 30px 30px 0px;
     border-left: 0.5px solid #484848;
@@ -344,11 +373,19 @@ div.side-by-side-elements {
     width: 40px;
 }
 
+.last-progress-point:hover {
+    opacity: 0.8;
+}
+
 .progress-point {
     border-left: 0.5px solid #484848;
     border-right: 0.5px solid #484848;
     height: 20px;
     width: 40px;
+}
+
+.progress-point:hover {
+    opacity: 0.8;
 }
 
 .achieved.green {
@@ -442,6 +479,10 @@ div.side-by-side-elements {
     cursor: pointer;
 }
 
+#post-to-feed > a:hover {
+    background-color: #1C9CDB;
+}
+
 
 
 /*=========================================*/
@@ -489,8 +530,7 @@ div.side-by-side-elements {
 .event-logo {
     margin-left: 100px;
     margin-bottom: 30px;
-    width: 200px;
-    height: auto;
+    max-width: 300px;
 }
 
 #achievement-feed ul li div {
@@ -545,12 +585,28 @@ div.side-by-side-elements {
     text-align: center;
 }
 
+#student-feed > a {
+    line-height: 2;
+    background-color: #26d91a;
+    color: #FFF;
+    border-radius: 10px;
+    width: 200px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#student-feed > a:hover {
+    background-color: #22c217;
+}
+
 #achievement-choice {
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: row wrap;
 }
 
 .achievement-selector {
+    display: flex;
+    flex-flow: column nowrap;
     color: #484848;
     text-align: center;
     font-size: 12px;
@@ -590,46 +646,41 @@ input[type='checkbox'].chosen-student + label {
 }
 
 input[type='checkbox']:checked.chosen-student + label {
-    background-color: yellow;
+    background-color: #2CA8E4;
+    padding: 2px;
+    color: white;
 }
 
-#sent-achievement-message {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50%;
-    padding: 20px;
-    z-index: 10000000000000000000;
-    background-color: #FFF;
-    color: black;
-    font-size: 30px;
+#achievement-modal {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
 }
 
-#sent-achievement-message > button {
-    margin: 10px;
-    float: right;
-    width: 30px;
-    align-self: flex-end;
-    justify-content: flex-start;
+#achievement-modal > a {
+    line-height: 2;
+    background-color: #26d91a;
+    color: #FFF;
+    border-radius: 10px;
+    width: 50px;
+    text-align: center;
+    cursor: pointer;
 }
 
-.overlay {
-    background:rgba(0,0,0,0.6);
-    transition: all 1s;
-    -webkit-transition: all 1s;
-    z-index: 1000;
-    position: absolute;
-    min-width: 100vw;
-    min-height: 100vh;
-    display: inline-block;
-    top: -10px;
-    bottom: +10px;
+#achievement-modal > a:hover {
+    background-color: #22c217;
 }
 
 /*=========================================*/
 /*================= PROFILE ===============*/
 /*=========================================*/
+
+#admin-profile-component {
+    margin: 20px;
+    padding: 20px;
+}
 
 #profile-wrapper {
     width: 80%;
@@ -640,6 +691,12 @@ input[type='checkbox']:checked.chosen-student + label {
     align-items: center;
     border-radius: 20px;
     color: #FFF;
+}
+
+#profile-wrapper.admin-profile {
+    padding: 10px;
+    border: 1px solid #E84B30;
+    color: #484848;
 }
 
 #edit {
@@ -817,6 +874,13 @@ input.hidden {
     width: 85%;
 }
 
+#add-new-project {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+}
+
 #add-new-project > input {
     color: #484848;
     text-align: center;
@@ -833,54 +897,58 @@ input.hidden {
     color: #26d91a;
 }
 
-.edit-projects-class > a {
-    margin-top: 10px;
+#add-new-project > a {
     line-height: 2;
     background-color: #26d91a;
     color: #FFF;
     border-radius: 10px;
-    width: 50px;
+    width: 60px;
     text-align: center;
     cursor: pointer;
+    align-self: center;
+    margin-left: 10px;
 }
 
-.edit-projects-class > a:hover {
+#add-new-project > a:hover {
     background-color: #22c217;
 }
 
 /*--------------TABLES-----------------*/
+
+table {
+    border: 1px solid #484848;
+}
 
 table > tr.first > th.column-header {
     padding: 10px;
     margin: 20px;
     text-align: center;
     font-size: 15px;
-    border: 1px solid #484848;
-    border-radius: 30px;
     width: 185px;
     height: 16px;
     margin: 5px;
 }
 
-table > tr.first.closed > th.column-header {
-    color: #E84B30;
-}
-
-table > tr.first.ongoing > th.column-header {
-    color: #1c9cdb;
-}
-
-table > tr > th {
+table > tr > td {
     font-size: 14px;
+    text-align: center;
 }
 
-th.button-column {
+table > tr:nth-child(even) {
+    background-color: #e8e8e8;
+}
+
+table.white-lines > tr:nth-child(even) {
+    background-color: LightGrey;
+}
+
+td.button-column {
     background-color: none;
     border: 0px;
     width: 0px;
 }
 
-th.button-in-row {
+td.button-in-row {
     cursor: pointer;
     line-height: 2;
     background-color: #E84B30;
@@ -891,7 +959,7 @@ th.button-in-row {
     margin-left: 20px;
 }
 
-th.button-in-row:hover {
+td.button-in-row:hover {
     background-color: #e53719;
 }
 

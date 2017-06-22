@@ -14,10 +14,10 @@ class CountryOptions extends Component {
             countries.push(key);
         }
         let countryOptions = countries.map((country) => {
-            return ( <option key={country} value={country}>{country}</option> )
+            return ( <option className="capitalize" key={country} value={country}>{country}</option> )
         });
         return (
-            <select name="country" onChange={this.props.handleInput} className="blue-background-style">
+            <select className="capitalize" name="country" onChange={this.props.handleInput} className="blue-background-style">
                 <option value=""></option>
                 {countryOptions}
             </select>

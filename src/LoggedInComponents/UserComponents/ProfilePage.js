@@ -14,15 +14,17 @@ class ProfilePage extends Component {
 
     render() {
         return (
-            <div id="profile-wrapper" className={this.props.profileColor}>
-                <img id="edit" src="/public/assets/edit.png" onClick={this.props.setNewProfileBackground}/>
-                <h2>My Profile</h2>
-                <div id="profile-picture-wrap">
-                    <img src={this.props.profilePicUrl}/>
-                    <UploadProfilePic setNewImage={this.props.setNewImage}/>
+            <div>
+                <h1 className="page-heading">Profile</h1>
+                <div id="profile-wrapper" className={this.props.profileColor}>
+                    <img id="edit" src="/public/assets/edit.png" onClick={this.props.setNewProfileBackground}/>
+                    <div id="profile-picture-wrap">
+                        <img src={this.props.profilePicUrl}/>
+                        <UploadProfilePic setNewImage={this.props.setNewImage}/>
+                    </div>
+                    {this.props.isStudent && <StudentDiary />}
+                    {this.props.isTeacher && <StudentSummaries />}
                 </div>
-                {this.props.isStudent && <StudentDiary />}
-                {this.props.isTeacher && <StudentSummaries />}
             </div>
         )
     }

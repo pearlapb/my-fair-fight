@@ -12,16 +12,16 @@ class UserTypeChecks extends Component {
         return (
             <div id="user-type-checks">
                 <div className="user-type">
+                    <input type="checkbox" id="student" name="student" value="student" className="user-type-checkbox" onChange={this.props.handleCheckChange}/>
+                    <label for="student">Student</label>
+                </div>
+                <div className="user-type">
                     <input type="checkbox" id="teacher" name="teacher" value="teacher" className="user-type-checkbox" onChange={this.props.handleCheckChange}/>
-                    <label for="teacher">teacher</label>
+                    <label for="teacher">Teacher</label>
                 </div>
                 <div className="user-type">
                     <input type="checkbox" id="FFmember" name="FFmember" value="FFmember" className="user-type-checkbox" onChange={this.props.handleCheckChange}/>
                     <label for="FFmember">FFmember</label>
-                </div>
-                <div className="user-type">
-                    <input type="checkbox" id="student" name="student" value="student" className="user-type-checkbox" onChange={this.props.handleCheckChange}/>
-                    <label for="student">student</label>
                 </div>
             </div>
         )

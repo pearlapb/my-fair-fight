@@ -60,15 +60,15 @@ class ManageUsers extends Component {
             if (this.state.countryFilter == 'all' || this.state.countryFilter == user.country || user.user_type == 'FFmember') {
                 return (
                     <div className="user-wrapper">
-                        <h3>{user.first_name} {user.last_name}</h3>
+                        <h3 className="capitalize">{user.first_name} {user.last_name}</h3>
                         {user.user_type != 'FFmember' && <Link className="delete-user" name={user.id} onClick={this.deleteUserFromDb}>Delete</Link>}
                         <div className="user-info">
                             <img className="user-pic" src={user.profile_pic_url}/>
                             <ul>
-                                {userType === 'student' && <li>Age: {user.age}</li>}
-                                {userType !== 'FFmember' && <li>Country: {user.country}</li>}
-                                {userType === 'student' && <li>City: {user.city}</li>}
-                                {userType === 'student' && <li>School: {user.school}</li>}
+                                {userType === 'student' && <li className="capitalize">Age: {user.age}</li>}
+                                {userType !== 'FFmember' && <li className="capitalize">Country: {user.country}</li>}
+                                {userType === 'student' && <li className="capitalize">City: {user.city}</li>}
+                                {userType === 'student' && <li className="capitalize">School: {user.school}</li>}
                             </ul>
                         </div>
                     </div>
@@ -85,6 +85,7 @@ class ManageUsers extends Component {
     render() {
         return (
             <div id="manage-users">
+                <h1 className="page-heading">Manage Users</h1>
                 <h2>Admins</h2>
                 {this.makeUserList('FFmember', this.state.admins)}
                 <p>Show:</p>

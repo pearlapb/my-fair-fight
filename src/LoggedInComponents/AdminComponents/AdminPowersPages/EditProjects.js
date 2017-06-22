@@ -36,6 +36,7 @@ class EditProjects extends Component {
     render() {
         return (
             <div id="edit-projects">
+                <h1 className="page-heading">Edit Projects</h1>
                 <AddNewProject ongoingProjects={this.state.ongoingProjects} closedProjects={this.state.closedProjects} refreshProjectLists={this.refreshProjectLists}/>
                 <OngoingProjects ongoingProjects={this.state.ongoingProjects} closedProjects={this.state.closedProjects} refreshProjectLists={this.refreshProjectLists}/>
                 <ClosedProjects ongoingProjects={this.state.ongoingProjects} closedProjects={this.state.closedProjects} refreshProjectLists={this.refreshProjectLists}/>

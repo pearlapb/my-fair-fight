@@ -53,3 +53,10 @@ CREATE TABLE projects (
     teacher VARCHAR,
     status VARCHAR
 );
+
+CREATE TABLE admin_activity (
+    id SERIAL PRIMARY KEY,
+    admin_id INTEGER NOT NULL,
+    activity_type VARCHAR NOT NULL,
+    comments VARCHAR
+);

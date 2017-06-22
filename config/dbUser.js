@@ -99,7 +99,7 @@ const insertOneAchievement = (requestedId, achievementType, achievementName, sen
     return new Promise(function(resolve, reject) {
         const q = `INSERT INTO achievements (student_id, achievement_type, achievement_name, sender_id, created_at)
                     VALUES ($1, $2, $3, $4, $5);`;
-        const params = [requestedId, achievementType, achievementName, senderId, Number(Date.now())];
+        const params = [requestedId, achievementType, achievementName, senderId, Date.now()];
         db.query(q, params).then((res) => {
             resolve(res);
         }).catch((err) => {
