@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory} from 'react-router';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import axios from 'axios';
 import PostToFeed from './PostToFeed.js';
 
@@ -30,14 +31,22 @@ class Timeline extends Component {
                     }
                 }
                 return (
-                    <li className="timeline-event">
-                    <img className={specificClass} src={imageUrl}/>
-                        <div className="event-content">
-                            <h3>{sentence}</h3>
-                            <p>{message}</p>
-                            <span className="event-date">{item.display_date}</span>
-                        </div>
-                    </li>
+                    <ReactCSSTransitionGroup
+                        transitionName="fade"
+                        transitionEnterTimeout={300}
+                        transitionLeaveTimeout={300}
+                        transitionAppear={true}
+                        transitionAppearTimeout={1000}
+                    >
+                        <li className="timeline-event">
+                        <img className={specificClass} src={imageUrl}/>
+                            <div className="event-content">
+                                <h3>{sentence}</h3>
+                                <p>{message}</p>
+                                <span className="event-date">{item.display_date}</span>
+                            </div>
+                        </li>
+                    </ReactCSSTransitionGroup>
                 )
             })
         }

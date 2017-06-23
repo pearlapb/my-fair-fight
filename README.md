@@ -1,6 +1,6 @@
 # my-fair-fight
 
-A quick backstory of the project:
+A quick backstory to the project:
 
 I started karate 17 years ago, and a couple of years back I joined an organisation called FairFight. It aims to empower young girls from underprivileged communities with the mental and physical benefits of martial arts. We find a karate instructor from the same community and talk to local schools to get them to offer karate lessons as one of their taught sports.
 
