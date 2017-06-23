@@ -32,11 +32,9 @@ class HomeFeedPage extends Component {
                 feed.data.result.map((post) => {
                     feedContent.push(post)
                 })
-                console.log(feedContent);
                 feedContent.sort((a, b) => {
                     return b.created_at - a.created_at;
                 })
-                console.log(feedContent);
                 this.setState({ feedContent, achievementList })
             })
         });

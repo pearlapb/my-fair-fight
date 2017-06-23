@@ -13,6 +13,7 @@ html, body, body>div {
 body {
     font-family: 'Source Sans Pro', Arial, sans-serif;
     color: #484848;
+    padding-top: 100px;
 }
 
 #main {
@@ -139,16 +140,31 @@ a.blue-oval:hover {
 /*=============== NAVBAR ===============*/
 /*======================================*/
 
+#nav-bar-LO {
+    background-color: #2CA8E4;
+    height: 100px;
+}
+
 #nav-bar-LO > img {
+    margin: 10px;
     height: 60px;
+    z-index: 10000000;
+}
+
+#nav-bar-LO > a {
+    margin: 20px;
 }
 
 .nav-bar {
+    top: 0;
+    position: fixed;
+    width: 100%;
     height: 70px;
     white-space: nowrap;
     padding: 5px;
     margin-bottom: 20px;
-    /*min-width: 100vh;*/
+    z-index: 100000000;
+    background-color: #ECECEC;
 }
 
 .nav-bar.with-border {
@@ -992,7 +1008,15 @@ td.button-in-row:hover {
     background-color: #e53719;
 }
 
+/*=========================================*/
+/*=============== All Admin Activity ============*/
+/*=========================================*/
 
+#all-admin-activity {
+    margin: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 /*=========================================*/
 /*=============== MANAGE USERS ============*/

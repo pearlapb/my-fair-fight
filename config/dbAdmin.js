@@ -24,6 +24,18 @@ const getAllUsers = () => {
     });
 };
 
+const getAllAdminActivity = () => {
+    return new Promise(function(resolve, reject) {
+        let q = `SELECT *
+                    FROM admin_activity;`;
+        db.query(q, []).then((result) => {
+            resolve(result);
+        }).catch((err) => {
+            reject(err);
+        });
+    })
+}
+
 const getMyAdminActivity = (userId) => {
     return new Promise(function(resolve, reject) {
         let q = `SELECT *
@@ -132,5 +144,6 @@ module.exports.saveNewProject = saveNewProject;
 module.exports.getMyAdminActivity = getMyAdminActivity;
 module.exports.closeOngoingProject = closeOngoingProject;
 module.exports.getAllUsers = getAllUsers;
+module.exports.getAllAdminActivity = getAllAdminActivity;
 module.exports.deleteUserFromDb = deleteUserFromDb;
 module.exports.disactivateUser = disactivateUser;

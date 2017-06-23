@@ -162,7 +162,8 @@ class AchievementSender extends Component {
                 padding: '0px',
                 display: 'flex',
                 justifyContent: 'center',
-                alignItems: 'center'
+                alignItems: 'center',
+                zIndex: '100000'
             }
         }
 

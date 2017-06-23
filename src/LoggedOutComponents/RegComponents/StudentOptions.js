@@ -35,8 +35,6 @@ class StudentOptions extends Component {
     }
 
     getSchoolsField() {
-        console.log('motherfucker', this.props.city);
-
         if (!this.props.city) {
             return null;
         }

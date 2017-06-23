@@ -19,14 +19,12 @@ class Registration extends Component {
     componentWillMount() {
         if (!this.state.countries && !this.state.cities && !this.state.school) {
             axios.get('/getAllOngoingProjectsForReg').then((result) => {
-                console.log(result.data.countries);
                 this.setState({ projectsMap: result.data.countries })
             })
         }
     }
 
     handleInput(e) {
-        console.log(e.target.name, e.target.value);
         this.setState({ [e.target.name]: e.target.value });
     };
 
@@ -43,28 +41,34 @@ class Registration extends Component {
             } else {
                 this.setState({ isTeacher: false })
             }
+        } else if (e.target.value == 'FFmember') {
+            if (e.target.checked) {
+                this.setState({ isFFmember: true, userType: e.target.value })
+            } else {
+                this.setState({ isFFmember: false })
+            }
         } else {
-            this.setState({ isStudent: false, isTeacher: false, isFFmember: true, userType: e.target.value })
+            this.setState({ isStudent: false, isTeacher: false, isFFmember: false, userType: e.target.value })
         }
     }
 
     handleRegistrationSubmit(e) {
         e.preventDefault();
-        const {firstName, lastName, userName, pw, userType, age, country, city, school} = this.state;
+        const {firstName, lastName, userName, pw, userType, age, country, city, school, adminCode } = this.state;
         let newUserInfo;
         if (this.state.userType == 'student') {
             newUserInfo = { firstName, lastName, userName, pw, userType, age, country, city, school };
         } else if (this.state.userType == 'teacher') {
             newUserInfo = { firstName, lastName, userName, pw, userType, country };
         } else if (this.state.userType == 'FFmember') {
-            newUserInfo = { firstName, lastName, userName, pw, userType };
+            newUserInfo = { firstName, lastName, userName, pw, userType, adminCode };
         }
         this.registerNewUser(newUserInfo);
     }
 
     registerNewUser(newUserInfo) {
         for (var key in newUserInfo) {
-            if (newUserInfo[key] == '') {
+            if (newUserInfo[key] == '' || newUserInfo[key] == null) {
                 this.setState({error: 'You need to fill in all the form!'});
                 return;
             }
@@ -101,7 +105,11 @@ class Registration extends Component {
 
                 {this.state.isTeacher && <CountryOptions country={this.state.country} projectsMap={this.state.projectsMap} handleInput={this.handleInput}/> }
                 {this.state.isStudent && <StudentOptions country={this.state.country} city={this.state.city} school={this.state.school} projectsMap={this.state.projectsMap} handleInput={this.handleInput}/>}
-
+                {this.state.isFFmember &&
+                    <div>
+                        <input onChange={this.handleInput} name="adminCode" className="blue-background-style" placeholder="admin registration code" type="password"/>
+                    </div>
+                }
                 <button className="white-oval small">GO</button>
 
             </form>

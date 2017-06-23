@@ -15,7 +15,6 @@ class App extends Component {
     }
 
     componentDidMount() {
-        console.log('hey');
         axios.get('/userProfileInfo').then((res) => {
             const {userId, userType, userName, firstName, lastName, profilePicUrl} = res.data.result;
             this.setState({ userId, userType, userName, firstName, lastName, profilePicUrl })

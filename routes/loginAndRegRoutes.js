@@ -15,7 +15,6 @@ router.route('/getAllOngoingProjectsForReg')
                     city.schools.push(project.school);
                 }
             });
-            console.log(JSON.stringify(countries, null, 4));
             res.json({ countries: countries });
         }).catch((err) => {
             console.log(err);
@@ -26,6 +25,10 @@ router.route('/getAllOngoingProjectsForReg')
 router.route('/registerNewUser')
 
     .post( (req, res) => {
+        if (req.body.userType === "FFmember" && req.body.adminCode !== 'thisisasecretcode') {
+            res.json({ error: true });
+            return null;
+        }
         db.checkIfUserExists(req.body).then(function(userInfo) {
             if (userInfo.rows[0]) {
                 res.json({alreadyRegistered: true});
@@ -76,16 +79,20 @@ router.route('/userLogin')
         const userLoginInfo = req.body;
         db.checkIfUserExists(userLoginInfo).then(function(userInfo) {
             if (userInfo) {
-                auth.checkPassword(userLoginInfo.pw, userInfo.rows[0].hashed_pw).then(function() {
-                    req.session.user = {
-                        userId: userInfo.rows[0].id,
-                        userType: userInfo.rows[0].user_type,
-                        firstName: userInfo.rows[0].first_name,
-                        lastName: userInfo.rows[0].last_name,
-                        userName: userInfo.rows[0].user_name,
-                    };
-                    res.json({ success: true });
-                }).catch(function(err) {
+                auth.checkPassword(userLoginInfo.pw, userInfo.rows[0].hashed_pw).then((pwMatches) => {
+                    if (pwMatches === true) {
+                        req.session.user = {
+                            userId: userInfo.rows[0].id,
+                            userType: userInfo.rows[0].user_type,
+                            firstName: userInfo.rows[0].first_name,
+                            lastName: userInfo.rows[0].last_name,
+                            userName: userInfo.rows[0].user_name,
+                        };
+                        res.json({ success: true });
+                    } else {
+                        res.json({ wrongPassword: true });
+                    }
+                }).catch((err) => {
                     res.json({ error: true });
                     console.log(err);
                 });

@@ -13,7 +13,6 @@ router.route('/userProfileInfo')
                 });
                 return;
             } else {
-                console.log(userInfo.rows[0]);
                 let userProfileInfo = {
                     userId: userInfo.rows[0].id,
                     userType: userInfo.rows[0].user_type,
@@ -94,7 +93,6 @@ router.route('/getAllStudentFeed')
             result.rows.forEach((post) => {
                 post.display_date = new Date(+post.created_at).toLocaleString();
             })
-            console.log(result.rows);
             res.json({ result: result.rows });
         }).catch((err) => {
             console.log(err);

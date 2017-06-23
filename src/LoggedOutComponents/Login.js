@@ -20,7 +20,6 @@ class Login extends Component {
             userName: this.state.userName,
             pw: this.state.pw
         }
-        console.log(userLoginInfo);
         for (var key in userLoginInfo) {
             if (userLoginInfo[key] == '') {
                 this.setState({error: 'You have to fill in the entire form.'})
@@ -29,8 +28,10 @@ class Login extends Component {
         }
         axios.post('/userLogin', userLoginInfo).then((res) => {
             if (res.data.success) {
-                location.href = '/'; //change this to login!!
+                location.href = '/';
                 this.setState({ success: true })
+            } else if (res.data.wrongPassword) {
+                this.setState({ error: 'You entered the wrong password' })
             } else {
                 this.setState({ error: 'Something went wrong.' });
             }

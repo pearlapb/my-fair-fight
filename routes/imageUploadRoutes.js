@@ -40,7 +40,6 @@ router.route('/uploadProfilePicture')
 router.route('/uploadImageForFeed')
 
     .post( uploader.single('file'), (req, res) => {
-        console.log('messageee', req.body.message);
         if (req.file) {
             db.savePostWithImageToDb(req.session.user.userId, req.body.message, req.file.filename).then(function(result) {
                 res.json({
@@ -58,7 +57,6 @@ router.route('/uploadImageForFeed')
 router.route('/sendNewPostForFeed')
 
     .post( (req, res) => {
-        console.log('hey --> ', req.body.message);
         db.saveSimplePostToDb(req.session.user.userId, req.body.message).then(function(result) {
             res.json({
                 success: true,

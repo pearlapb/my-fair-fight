@@ -23,12 +23,22 @@ router.route('/getAllUsers')
         });
     });
 
+router.route('/getAllAdminActivity')
+
+    .get( (req, res) => {
+        db.getAllAdminActivity().then((result) => {
+            res.json({ result: result.rows });
+        }).catch((err) => {
+            console.log(err);
+            res.json({ error: true });
+        });
+    });
+
 
 router.route('/getMyAdminActivity')
 
     .get( (req, res) => {
         db.getMyAdminActivity(req.session.user.userId).then((result) => {
-            console.log(result);
             res.json({ result: result })
         }).catch((err) => {
             console.log(err);

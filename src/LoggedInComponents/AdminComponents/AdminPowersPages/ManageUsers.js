@@ -16,7 +16,6 @@ class ManageUsers extends Component {
     }
 
     handleCountryFilter(e) {
-        console.log(e.target.value)
         this.setState({ countryFilter: e.target.value })
     }
 

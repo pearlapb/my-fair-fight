@@ -20,7 +20,6 @@ class AdminProfile extends Component {
 
     showAdminActivity() {
         if (!this.state.adminActivity) {
-            console.log('heyyy');
             return null;
         }
         if (this.state.adminActivity.length === 0) {
@@ -28,7 +27,6 @@ class AdminProfile extends Component {
                 <p>This admin has not changed anything yet</p>
             )
         }
-        console.log('about to run showAdminActivity', this.state.adminActivity);
         let adminActivity = this.state.adminActivity.map((item) => {
             return (
                 <tr>
