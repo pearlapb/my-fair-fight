@@ -549,17 +549,23 @@ div.side-by-side-elements {
     height: 100px;
 }
 
-.event-logo {
+.event-logo.achievement-type {
     margin-left: 100px;
     margin-bottom: 30px;
     max-width: 200px;
     max-height: 400px
 }
 
+.event-logo.post-type {
+    margin-left: 100px;
+    margin-bottom: 30px;
+    max-width: 400px
+}
+
 #achievement-feed ul li div {
     position: relative;
     bottom: 0;
-    width: 20em;
+    width: 30em;
     border-radius: 30px;
     padding: 15px;
     border: 1px solid #484848;
