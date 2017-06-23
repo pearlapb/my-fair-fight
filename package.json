@@ -28,6 +28,7 @@
     "react-dom": "^15.4.1",
     "react-modal": "^2.0.6",
     "react-router": "^3.0.0",
+    "react-transition-group": "^1.2.0",
     "spiced-pg": "spicedacademy/spiced-pg",
     "webpack": "^1.14.0",
     "webpack-dev-middleware": "^1.8.4"
