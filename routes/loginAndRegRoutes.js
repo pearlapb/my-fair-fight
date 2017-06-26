@@ -1,5 +1,5 @@
 var express = require('express'), router = express.Router();
-const db = require('../config/db.js');
+const db = require('../config/dbReg.js');
 const auth = require('../config/auth.js');
 
 router.route('/getAllOngoingProjectsForReg')
