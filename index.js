@@ -34,7 +34,7 @@ app.use('/', require('./routes/adminRoutes.js'));
 
 app.get('/admin', function(req, res) {
     if (!req.session.user) {
-        res.redirect('/identification');
+        res.redirect('/login');
     } else {
         if (req.session.user.userType != 'FFmember') {
             res.redirect('/');
@@ -46,7 +46,7 @@ app.get('/admin', function(req, res) {
 
 app.get('/', function(req, res) {
     if (!req.session.user) {
-        res.redirect('/identification');
+        res.redirect('/login');
     } else {
         if (req.session.user.userType == 'FFmember') {
             res.redirect('/admin');
@@ -56,18 +56,20 @@ app.get('/', function(req, res) {
     }
 });
 
-app.get('/identification', function(req, res) {
+app.get('/login', function(req, res) {
     if (req.session.user) {
         res.redirect('/');
     } else {
+        console.log('hi');
         res.sendFile(__dirname + '/index.html');
     }
 });
 
 
 app.get('*', function(req, res) {
+    console.log("whoop");
     if (!req.session.user) {
-        res.redirect('/identification');
+        res.redirect('/login');
     } else {
         res.sendFile(__dirname + '/index.html');
     }

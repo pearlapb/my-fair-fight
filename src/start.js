@@ -52,7 +52,7 @@ const loggedInAdminRouter = (
 )
 
 let elem;
-if (location.pathname == '/identification') {
+if (location.pathname == '/login') {
     elem = loggedOutRouter;
 } else if (location.pathname == '/admin') {
     elem = loggedInAdminRouter;
