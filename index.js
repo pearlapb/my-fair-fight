@@ -7,7 +7,7 @@ const server = require('http').Server(app);
 const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
 
-const db = require('./config/db.js');
+const db = require('./config/dbReg.js');
 const auth = require('./config/auth.js');
 
 app.use(cookieSession({
@@ -72,6 +72,6 @@ app.get('*', function(req, res) {
     }
 });
 
-app.listen(8080, function() {
+app.listen(process.env.PORT || 8080, function() {
     console.log(chalk.bgMagenta("I'm listening."));
 });

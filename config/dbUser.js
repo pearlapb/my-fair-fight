@@ -1,5 +1,6 @@
 var spicedPg = require('spiced-pg');
-var db = spicedPg("postgres:funkyChicken:letmein@localhost:5432/myfairfight");
+var dbUrl = process.env.DATABASE_URL || "postgres:funkyChicken:letmein@localhost:5432/myfairfight";
+var db = spicedPg(dbUrl);
 
 const getUserProfileInfo = (requestedId) => {
     return new Promise(function(resolve, reject) {
