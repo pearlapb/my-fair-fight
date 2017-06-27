@@ -39,7 +39,7 @@ app.get('/admin', function(req, res) {
         if (req.session.user.userType != 'FFmember') {
             res.redirect('/');
         } else {
-            res.sendFile(__dirname + '/index.html');
+            res.sendFile(__dirname + '/public/index.html');
         }
     }
 });
@@ -51,7 +51,7 @@ app.get('/', function(req, res) {
         if (req.session.user.userType == 'FFmember') {
             res.redirect('/admin');
         } else {
-            res.sendFile(__dirname + '/index.html');
+            res.sendFile(__dirname + '/public/index.html');
         }
     }
 });
@@ -60,7 +60,7 @@ app.get('/identification', function(req, res) {
     if (req.session.user) {
         res.redirect('/');
     } else {
-        res.sendFile(__dirname + '/index.html');
+        res.sendFile(__dirname + '/public/index.html');
     }
 });
 
@@ -69,7 +69,7 @@ app.get('*', function(req, res) {
     if (!req.session.user) {
         res.redirect('/identification');
     } else {
-        res.sendFile(__dirname + '/index.html');
+        res.sendFile(__dirname + '/public/index.html');
     }
 });
 
