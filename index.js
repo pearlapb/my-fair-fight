@@ -23,7 +23,8 @@ if (process.env.NODE_ENV != 'production') {
     app.use(require('./build'));
 }
 
-app.use('/public', express.static(__dirname+ '/public'));
+app.use(express.static(__dirname+ '/public'));
+app.use('/assets', express.static(__dirname + '/public/assets'));
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
 app.use('/', require('./routes/loginAndRegRoutes.js'));

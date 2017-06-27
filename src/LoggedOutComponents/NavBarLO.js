@@ -11,7 +11,7 @@ class NavBarLO extends Component {
     render() {
         return (
             <div className="nav-bar" id="nav-bar-LO">
-                <img src="/public/assets/logo/my-ff-white.svg"/>
+                <img src="/assets/logo/my-ff-white.svg"/>
                 <Link id="login-reg-button" className="white-oval" onClick={this.props.toggleRegAndLogin}>{this.props.showReg ? 'Login' : 'Register'}</Link>
             </div>
         )

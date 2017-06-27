@@ -24,16 +24,16 @@ class NavBarUser extends Component {
     render() {
         return (
             <div className="nav-bar with-border" id="nav-bar-LI">
-                <Link to="/"><img src="/public/assets/logo/my-ff-grey.svg"/></Link>
+                <Link to="/"><img src="/assets/logo/my-ff-grey.svg"/></Link>
                 {this.state.showLargePopupMenu && <div id="large-popup-menu" className="new-blue">
-                    <img id="nav-bar-cross" src="/public/assets/cross/cross-white.svg" onClick={this.showLargePopupMenu}/>
+                    <img id="nav-bar-cross" src="/assets/cross/cross-white.svg" onClick={this.showLargePopupMenu}/>
                     <ul>
                         <li><Link onClick={this.showLargePopupMenu} to="/">Home</Link></li>
                         <li><Link onClick={this.showLargePopupMenu} to="profile">My Profile</Link></li>
-                        <li className="logout" onClick={this.handleLogout}>Logout <img src="/public/assets/exit.svg"/></li>
+                        <li className="logout" onClick={this.handleLogout}>Logout <img src="/assets/exit.svg"/></li>
                     </ul>
                 </div>}
-                <img id="nav-bar-cross" src="/public/assets/cross/hamburgermenu.svg" onClick={this.showLargePopupMenu}/>
+                <img id="nav-bar-cross" src="/assets/cross/hamburgermenu.svg" onClick={this.showLargePopupMenu}/>
             </div>
         )
     }

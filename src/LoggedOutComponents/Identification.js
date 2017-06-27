@@ -21,7 +21,7 @@ class Identification extends Component {
             <div className="main-component new-blue">
                 <NavBarLO toggleRegAndLogin={this.toggleRegAndLogin} showLogin={this.state.showLogin} showReg={this.state.showReg}/>
                 <div id="logo-and-form" className="side-by-side-elements">
-                    <img src="/public/assets/logo/bright-yellow-logo.svg"/>
+                    <img src="/assets/logo/bright-yellow-logo.svg"/>
                     {this.state.showReg && <Registration />}
                     {this.state.showLogin && <Login />}
                 </div>
