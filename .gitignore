@@ -2,3 +2,5 @@ node_modules
 .DS_Store
 bundle.js
 uploads
+config/secrets.json
+config/S3Secrets.json

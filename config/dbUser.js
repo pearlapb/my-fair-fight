@@ -14,6 +14,18 @@ const getUserProfileInfo = (requestedId) => {
     });
 };
 
+const saveS3ImageUrlToDb = (file, session) => {
+    return new Promise(function(resolve, reject) {
+        const q = 'UPDATE users SET profile_pic_url = $1 WHERE id = $2 RETURNING profile_pic_url;';
+        const params = [`https://s3.eu-west-2.amazonaws.com/myfairfight/${file.filename}`, session.userId];
+        db.query(q, params).then(function(result) {
+            resolve(result);
+        }).catch(function(err) {
+            reject(err);
+        });
+    });
+}
+
 const saveImageUrlToDb = (file, session) => {
     return new Promise(function(resolve, reject) {
         const q = 'UPDATE users SET profile_pic_url = $1 WHERE id = $2 RETURNING profile_pic_url;';
@@ -155,6 +167,7 @@ const editProfileBackgroundColor = (newBackground, profileId) => {
 
 module.exports.getUserProfileInfo = getUserProfileInfo;
 module.exports.saveImageUrlToDb = saveImageUrlToDb;
+module.exports.saveS3ImageUrlToDb = saveS3ImageUrlToDb;
 module.exports.getAllAchievements = getAllAchievements;
 module.exports.getAllStudentFeed = getAllStudentFeed;
 module.exports.getCountryOfUser = getCountryOfUser;

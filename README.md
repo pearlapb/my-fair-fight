@@ -3,7 +3,7 @@
 
 
 MyFairFight is my SPICED Academy Final Project. We were given one week to build anything we wanted.
-Check it out on heroku [here](https://myfairfight.herokuapp.com/login#/)! Image uploads aren't working yet as I am currently learning about and setting up Amazon Web Services S3.
+Check it out on heroku [here](https://myfairfight.herokuapp.com/)! Image uploads aren't working yet as I am currently learning about and setting up Amazon Web Services S3.
 
 ### Project Backstory
 
