@@ -1,7 +1,7 @@
 var spicedPg = require('spiced-pg');
 let dbUrl;
 if (!process.env.DATABASE_URL) {
-    dbUrl = require('./secrets.json').dbUrl;
+    dbUrl = require('../config/secrets.json').dbUrl;
 } else {
     dbUrl = process.env.DATABASE_URL;
 }

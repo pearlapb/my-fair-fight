@@ -1,5 +1,5 @@
 var express = require('express'), router = express.Router();
-const db = require('../config/dbReg.js');
+const db = require('../database/dbReg.js');
 const auth = require('../config/auth.js');
 const adminSecretCode = process.env.ADMIN_SECRET_CODE || require('../config/secrets.json').adminCode;
 

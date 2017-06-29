@@ -1,5 +1,5 @@
 var express = require('express'), router = express.Router();
-const db = require('../config/dbAdmin.js');
+const db = require('../database/dbAdmin.js');
 
 router.route('/getAllProjects')
 

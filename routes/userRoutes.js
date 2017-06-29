@@ -1,5 +1,5 @@
 var express = require('express'), router = express.Router();
-const db = require('../config/dbUser.js');
+const db = require('../database/dbUser.js');
 
 
 router.route('/userProfileInfo')

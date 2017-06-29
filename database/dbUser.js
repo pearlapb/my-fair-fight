@@ -1,7 +1,7 @@
 var spicedPg = require('spiced-pg');
 let dbUrl;
 if (!process.env.DATABASE_URL) {
-    dbUrl = require('./secrets.json').dbUrl;
+    dbUrl = require('../config/secrets.json').dbUrl;
 } else {
     dbUrl = process.env.DATABASE_URL;
 }
@@ -19,10 +19,10 @@ const getUserProfileInfo = (requestedId) => {
     });
 };
 
-const saveS3ImageUrlToDb = (file, session) => {
+const saveImageNameToDb = (file, session) => {
     return new Promise(function(resolve, reject) {
         const q = 'UPDATE users SET profile_pic_url = $1 WHERE id = $2 RETURNING profile_pic_url;';
-        const params = [`https://s3.eu-west-2.amazonaws.com/myfairfight/${file.filename}`, session.userId];
+        const params = [file.filename, session.userId];
         db.query(q, params).then(function(result) {
             resolve(result);
         }).catch(function(err) {
@@ -172,7 +172,7 @@ const editProfileBackgroundColor = (newBackground, profileId) => {
 
 module.exports.getUserProfileInfo = getUserProfileInfo;
 module.exports.saveImageUrlToDb = saveImageUrlToDb;
-module.exports.saveS3ImageUrlToDb = saveS3ImageUrlToDb;
+module.exports.saveImageNameToDb = saveImageNameToDb;
 module.exports.getAllAchievements = getAllAchievements;
 module.exports.getAllStudentFeed = getAllStudentFeed;
 module.exports.getCountryOfUser = getCountryOfUser;

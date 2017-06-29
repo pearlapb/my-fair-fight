@@ -7,7 +7,7 @@ const server = require('http').Server(app);
 const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
 
-const db = require('./config/dbReg.js');
+const db = require('./database/dbReg.js');
 const auth = require('./config/auth.js');
 
 app.use(cookieSession({
