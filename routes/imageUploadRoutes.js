@@ -4,8 +4,7 @@ const path = require('path');
 const aws = require('aws-sdk');
 const http = require('http');
 const fs = require('fs');
-const secrets = require('../config/secrets.json');
-const s3Secrets = require('../config/secrets.json');
+
 const multer = require('multer');
 
 var diskStorage = multer.diskStorage({
@@ -23,9 +22,23 @@ var uploader = multer({
     }
 });
 
-var config_path = path.join(path.resolve(__dirname, '../config/s3Secrets.json'));
-aws.config.loadFromPath(config_path);
-var s3 = new aws.S3();
+let AWSAccess;
+if (!process.env.AWS_ACCESS_KEY_ID) {
+    secrets = require('../config/secrets.json');
+    AWSAccess = {
+        accessKeyId: secrets.AWSAccessKeyId,
+        secretAccessKey: secrets.AWSSecretAccessKey,
+        bucketName: secrets.AWSBucketName
+    }
+} else {
+    AWSAccess = {
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+        bucketName: process.env.S3_BUCKET_NAME
+    }
+}
+
+let s3 = new aws.S3(AWSAccess);
 
 router.route('/buckets')
 

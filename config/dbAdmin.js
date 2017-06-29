@@ -1,5 +1,10 @@
 var spicedPg = require('spiced-pg');
-var dbUrl = process.env.DATABASE_URL || "postgres:funkyChicken:letmein@localhost:5432/myfairfight";
+let dbUrl;
+if (!process.env.DATABASE_URL) {
+    dbUrl = require('./secrets.json').dbUrl;
+} else {
+    dbUrl = process.env.DATABASE_URL;
+}
 var db = spicedPg(dbUrl);
 
 const getAllProjects = () => {

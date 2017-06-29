@@ -1,7 +1,7 @@
 var express = require('express'), router = express.Router();
 const db = require('../config/dbReg.js');
 const auth = require('../config/auth.js');
-const secrets = require('../config/secrets.json');
+const adminSecretCode = process.env.ADMIN_SECRET_CODE || require('../config/secrets.json').adminCode;
 
 router.route('/getAllOngoingProjectsForReg')
 
@@ -26,7 +26,7 @@ router.route('/getAllOngoingProjectsForReg')
 router.route('/registerNewUser')
 
     .post( (req, res) => {
-        if (req.body.userType === "FFmember" && req.body.adminCode !== secrets.adminCode) {
+        if (req.body.userType === "FFmember" && req.body.adminCode !== adminSecretCode) {
             res.json({ error: true });
             return null;
         }
