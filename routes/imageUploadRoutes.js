@@ -91,16 +91,7 @@ router.route('/uploadProfilePicture')
                     res.json({ error: true })
                 } else {
                     console.log("s3 upload worked --> ", data);
-                    db.saveS3ImageUrlToDb(req.file, req.session.user).then(function(result) {
-                        res.json({
-                            success: true,
-                            file: result,
-                            s3file: data
-                        });
-                    }).catch(function(err) {
-                        console.log(err);
-                    });
-                    /*db.saveImageUrlToDb(req.file, req.session.user).then(function(result) {
+                    /*db.saveS3ImageUrlToDb(req.file, req.session.user).then(function(result) {
                         res.json({
                             success: true,
                             file: result,
@@ -109,6 +100,14 @@ router.route('/uploadProfilePicture')
                     }).catch(function(err) {
                         console.log(err);
                     });*/
+                    db.saveImageUrlToDb(req.file, req.session.user).then(function(result) {
+                        res.json({
+                            success: true,
+                            file: result,
+                        });
+                    }).catch(function(err) {
+                        console.log(err);
+                    });
                 }
             })
         } else {
