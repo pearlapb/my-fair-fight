@@ -28,7 +28,7 @@ app.use('/assets', express.static(__dirname + '/public/assets'));
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
 app.use('/', require('./routes/loginAndRegRoutes.js'));
-app.use('/', require('./routes/imageUploadRoutes.js'));
+app.use('/', require('./routes/imageUploadRoutesS3Knox.js'));
 app.use('/', require('./routes/userRoutes.js'));
 app.use('/', require('./routes/adminRoutes.js'));
 
@@ -67,7 +67,6 @@ app.get('/login', function(req, res) {
 
 
 app.get('*', function(req, res) {
-    console.log("whoop");
     if (!req.session.user) {
         res.redirect('/login');
     } else {

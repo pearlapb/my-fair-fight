@@ -5,5 +5,5 @@ uploads
 config/secrets.json
 config/S3Secrets.json
 routes/s3Examples.js
-routes/imageUploadRoutes-AWS-SDK.js
-config/toS3.js
+routes/imageUploadRoutes.js
+routes/imageUploadRoutesS3SDK.js

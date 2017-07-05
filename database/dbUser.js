@@ -19,10 +19,10 @@ const getUserProfileInfo = (requestedId) => {
     });
 };
 
-const saveImageNameToDb = (file, session) => {
+const saveImageS3UrlToDb = (file, session) => {
     return new Promise(function(resolve, reject) {
         const q = 'UPDATE users SET profile_pic_url = $1 WHERE id = $2 RETURNING profile_pic_url;';
-        const params = [file.filename, session.userId];
+        const params = [`https://s3.amazonaws.com/myfairfight2/${file}`, session];
         db.query(q, params).then(function(result) {
             resolve(result);
         }).catch(function(err) {
@@ -34,7 +34,7 @@ const saveImageNameToDb = (file, session) => {
 const saveImageUrlToDb = (file, session) => {
     return new Promise(function(resolve, reject) {
         const q = 'UPDATE users SET profile_pic_url = $1 WHERE id = $2 RETURNING profile_pic_url;';
-        const params = [`/uploads/${file.filename}`, session.userId];
+        const params = [`/uploads/${file}`, session];
         db.query(q, params).then(function(result) {
             resolve(result);
         }).catch(function(err) {
@@ -126,6 +126,20 @@ const insertOneAchievement = (requestedId, achievementType, achievementName, sen
     });
 };
 
+const savePostWithS3ImageToDb = (requestedId, message, photo) => {
+    return new Promise(function(resolve, reject) {
+        const q = `INSERT INTO student_feed (student_id, message, photo, created_at)
+                    VALUES ($1, $2, $3, $4)
+                    RETURNING *;`;
+        const params = [requestedId, message, `https://s3.amazonaws.com/myfairfight2/${photo}`, Number(Date.now())];
+        db.query(q, params).then((res) => {
+            resolve(res);
+        }).catch((err) => {
+            reject(err);
+        });
+    });
+};
+
 const savePostWithImageToDb = (requestedId, message, photo) => {
     return new Promise(function(resolve, reject) {
         const q = `INSERT INTO student_feed (student_id, message, photo, created_at)
@@ -172,7 +186,7 @@ const editProfileBackgroundColor = (newBackground, profileId) => {
 
 module.exports.getUserProfileInfo = getUserProfileInfo;
 module.exports.saveImageUrlToDb = saveImageUrlToDb;
-module.exports.saveImageNameToDb = saveImageNameToDb;
+module.exports.saveImageS3UrlToDb = saveImageS3UrlToDb;
 module.exports.getAllAchievements = getAllAchievements;
 module.exports.getAllStudentFeed = getAllStudentFeed;
 module.exports.getCountryOfUser = getCountryOfUser;
@@ -180,5 +194,6 @@ module.exports.getAllStudentsFromCountry = getAllStudentsFromCountry;
 module.exports.giveAchievementToStudents = giveAchievementToStudents;
 module.exports.insertOneAchievement = insertOneAchievement;
 module.exports.savePostWithImageToDb = savePostWithImageToDb;
+module.exports.savePostWithS3ImageToDb = savePostWithS3ImageToDb;
 module.exports.saveSimplePostToDb = saveSimplePostToDb;
 module.exports.editProfileBackgroundColor = editProfileBackgroundColor;
